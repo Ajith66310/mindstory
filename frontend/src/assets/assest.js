@@ -1,9 +1,10 @@
 import brandlogo from './brand-logo-img.avif'
+import brandlogowhite from './brand-logo-img-white.avif'
 
 
 const img = {
 brandlogo,
-
+brandlogowhite,
 }
 
   const faqs = [
@@ -36,6 +37,26 @@ brandlogo,
       id: "6.",
       question: "How much does digital marketing cost?",
       answer: "Costs vary based on your specific goals and the services required. We provide custom solutions tailored to your budget and needs."
+    },
+    {
+      id: "7.",
+      question: "How does Mindstory improve social media presence?",
+      answer: "We provide social media strategy, creative design, content posting, influencer marketing, and ad campaigns to boost brand engagement."
+    },
+    {
+      id: "8.",
+      question: "How do you handle ongoing support and reporting?",
+      answer: "A dedicated manager ensures daily communication, monthly performance reports, and frequent strategy reviews to keep you informed and aligned."
+    },
+    {
+      id: "9.",
+      question: "What makes Mindstory the best digital marketing agency in Kerala?",
+      answer: "We stand out through 10+ years of experience, data-driven strategies, transparent reporting, and a dedication to delivering measurable results."
+    },
+    {
+      id: "10.",
+      question: "How do I get started with Mindstory?",
+      answer: "Simply reach out via our website or call us—we’ll arrange a free consultation to understand your needs and design a tailored strategy for digital success."
     }
   ];  
 

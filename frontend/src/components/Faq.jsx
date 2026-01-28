@@ -49,55 +49,79 @@ const Faq = () => {
   }, [activeIndex]);
 
   return (
-    <section ref={sectionRef} className="w-full py-24 bg-black px-6 md:px-12 lg:px-24">
-      <div className="max-w-300 mx-auto">
+    <section ref={sectionRef} className="w-full py-16 md:py-24 bg-white px-6 mt-20 md:px-12 lg:px-24">
+      <div className="max-w-6xl mx-auto">
         
-        <div className="mb-16">
-          <p className="text-[#f5a300] text-xs font-bold uppercase tracking-[0.3em] mb-4">Support</p>
-          <h2 className="text-5xl md:text-7xl font-medium text-white tracking-tighter">
+        {/* Header */}
+        <div className="mb-12 md:mb-16">
+          <p className="text-[#f5a300] text-xs font-bold uppercase tracking-[0.3em] mb-4">
+            Support
+          </p>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight leading-tight">
             Information <br /> & Help.
           </h2>
         </div>
 
-        <div className="flex flex-col border-b border-white/10">
+        {/* FAQ Accordion */}
+        <div className="flex flex-col border-b border-gray-200">
           {faqs.map((faq, index) => (
             <div 
               key={faq.id}
               ref={(el) => (faqItemsRef.current[index] = el)}
-              className="border-t border-white/10 overflow-hidden"
+              className="border-t border-gray-200 overflow-hidden"
             >
+              {/* Question Button */}
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full py-8 flex items-center justify-between text-left group"
+                className="w-full py-6 md:py-8 flex items-center justify-between text-left group hover:bg-gray-50 transition-colors duration-300 px-4 md:px-6"
               >
-                <div className="flex items-start gap-6">
-                  <span className="text-[#f5a300] font-mono text-sm mt-1">
-                    {faq.id < 10 ? `0${faq.id}` : faq.id}
+                <div className="flex items-start gap-4 md:gap-6 flex-1">
+                  {/* Number */}
+                  <span className="text-[#f5a300] font-mono text-sm md:text-base font-bold mt-1 shrink-0">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className={`text-xl md:text-2xl font-medium transition-colors duration-300 ${activeIndex === index ? 'text-[#f5a300]' : 'text-white group-hover:text-gray-400'}`}>
+                  
+                  {/* Question */}
+                  <h3 className={`text-lg md:text-xl lg:text-2xl font-semibold transition-colors duration-300 ${
+                    activeIndex === index ? 'text-[#f5a300]' : 'text-black group-hover:text-[#f5a300]'
+                  }`}>
                     {faq.question}
                   </h3>
                 </div>
 
-                {/* New Icon: Rotating Chevron */}
-                <div className={`transition-transform duration-500 p-2 rounded-full border border-white/10 ${activeIndex === index ? 'rotate-180 bg-[#f5a300] text-black border-[#f5a300]' : 'text-white'}`}>
-                  <ChevronDown size={20} strokeWidth={1.5} />
+                {/* Chevron Icon */}
+                <div className={`transition-all duration-300 p-2 rounded-full border-2 shrink-0 ml-4 ${
+                  activeIndex === index 
+                    ? 'rotate-180 bg-[#f5a300] text-white border-[#f5a300]' 
+                    : 'text-black border-gray-300 group-hover:border-[#f5a300] group-hover:text-[#f5a300]'
+                }`}>
+                  <ChevronDown size={20} strokeWidth={2.5} />
                 </div>
               </button>
 
-              {/* Collapsible Content */}
+              {/* Collapsible Answer */}
               <div 
                 id={`faq-content-${index}`} 
-                className="h-0 opacity-0 overflow-hidden pointer-events-none"
+                className="h-0 opacity-0 overflow-hidden"
               >
-                <div className="pb-8 `pl-17 max-w-2xl">
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                <div className="pb-6 md:pb-8 px-4 md:px-6 pl-12 md:pl-20">
+                  <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl">
                     {faq.answer}
                   </p>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 md:mt-20 text-center">
+          <p className="text-gray-600 text-base md:text-lg mb-6">
+            Still have questions? We're here to help.
+          </p>
+          <button className="bg-[#f5a300] text-white px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-[#e69500] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            Contact Us
+          </button>
         </div>
       </div>
     </section>
