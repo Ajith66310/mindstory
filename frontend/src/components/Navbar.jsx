@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-end">
             <NavLink
               to="/contact"
-              className="hidden md:flex items-center gap-2 bg-[#ec9a03] text-black px-6 py-3 rounded-full font-bold text-xs tracking-widest hover:bg-white transition-colors uppercase"
+              className="hidden md:flex items-center gap-2 bg-[#ec9a03] text-black px-6 py-3 rounded-full font-bold text-xs tracking-widest hover:bg-white hover:border hover:border-orange-300 transition-colors uppercase"
             >
               Let's Talk
               <ArrowUpRight size={16} />
