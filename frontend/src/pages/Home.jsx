@@ -1,11 +1,15 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import Faq from '../components/Faq'
 
 const Home = () => {
   return (
-    <div>
+    <>
     <Navbar/>
-    </div>
+    <Faq/>
+    <Footer/>
+    </>
   )
 }
 
