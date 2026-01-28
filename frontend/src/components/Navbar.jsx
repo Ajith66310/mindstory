@@ -2,42 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { X, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { img } from '../assets/assest';
+import { navItems } from '../assets/assest.js';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const navItems = [
-    { 
-      name: 'About', 
-      path: '/about',
-      hasDropdown: true,
-      subItems: ['Our Story', 'Our Team', 'Methodology']
-    },
-    { 
-      name: 'Services', 
-      path: '/services',
-      hasDropdown: true,
-      subItems: ['Digital Marketing', 'Web Development', 'UI/UX Design', 'SEO']
-    },
-    { 
-      name: 'Works', 
-      path: '/works',
-      hasDropdown: true,
-      subItems: ['Case Studies', 'Recent Projects', 'Client Testimonials']
-    },
-    { 
-      name: 'Learn', 
-      path: '/learn',
-      hasDropdown: true,
-      subItems: ['Blog', 'Resources', 'Guides']
-    },
-    { 
-      name: 'Careers', 
-      path: '/careers',
-      hasDropdown: false 
-    },
-  ];
+
 
   return (
     <>

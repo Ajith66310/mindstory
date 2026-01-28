@@ -61,5 +61,49 @@ brandlogowhite,
   ];  
 
 
+    const brands = [
+    { name: 'Apple', tagline: 'Think Different', logo: brandlogo, color: '#000000', bg: '#f5f5f7' },
+    { name: 'Google', tagline: 'Organize Information', logo: brandlogo, color: '#4285F4', bg: '#f1f3f4' },
+    { name: 'Microsoft', tagline: 'Empower Everyone', logo: brandlogo, color: '#00A4EF', bg: '#f3f2f1' },
+    { name: 'Amazon', tagline: 'Work Hard', logo: brandlogo, color: '#FF9900', bg: '#fef9f3' },
+    { name: 'Tesla', tagline: 'Accelerate Transition', logo: brandlogo, color: '#CC0000', bg: '#fef5f5' },
+    { name: 'Nike', tagline: 'Just Do It', logo: brandlogo, color: '#111111', bg: '#f5f5f5' },
+    { name: 'Coca-Cola', tagline: 'Taste The Feeling', logo: brandlogo, color: '#F40009', bg: '#fef5f5' },
+    { name: 'Samsung', tagline: 'Do What You Can\'t', logo: brandlogo, color: '#1428A0', bg: '#f3f5fb' },
+    { name: 'Netflix', tagline: 'See What\'s Next', logo: brandlogo, color: '#E50914', bg: '#fef5f6' },
+    { name: 'Adobe', tagline: 'Creativity For All', logo: brandlogo, color: '#FF0000', bg: '#fef5f5' },
+  ];
 
-export { img, faqs };
+  const navItems = [
+    { 
+      name: 'About', 
+      path: '/about',
+      hasDropdown: true,
+      subItems: ['Our Story', 'Our Team', 'Methodology']
+    },
+    { 
+      name: 'Services', 
+      path: '/services',
+      hasDropdown: true,
+      subItems: ['Digital Marketing', 'Web Development', 'UI/UX Design', 'SEO']
+    },
+    { 
+      name: 'Works', 
+      path: '/works',
+      hasDropdown: true,
+      subItems: ['Case Studies', 'Recent Projects', 'Client Testimonials']
+    },
+    { 
+      name: 'Learn', 
+      path: '/learn',
+      hasDropdown: true,
+      subItems: ['Blog', 'Resources', 'Guides']
+    },
+    { 
+      name: 'Careers', 
+      path: '/careers',
+      hasDropdown: false 
+    },
+  ];
+
+export { img , faqs , brands , navItems};
