@@ -117,7 +117,7 @@ const navItems = [
       hasDropdown: true, 
       subItems: [
         { name: 'Contact', path: '/contact' },
-        { name: 'Career', path: '/contact/career' }
+        { name: 'Career', path: '/careers' }
       ]
     },
   ];
