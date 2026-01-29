@@ -8,10 +8,12 @@ import Learn from './pages/Learn'
 import Services from './pages/Services'
 import Works from './pages/Works'
 import Error from './pages/Error'
+import CustomCursor from './components/CustomCursor'
 
 const App = () => {
   return (
     <>
+    <CustomCursor/>
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/about' element={<About/>} />

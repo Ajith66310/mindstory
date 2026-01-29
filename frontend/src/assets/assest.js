@@ -62,7 +62,7 @@ brandlogowhite,
 
 
     const brands = [
-    { name: 'Apple', tagline: 'Think Different', logo: brandlogo, color: '#000000', bg: '#f5f5f7' },
+    { name: 'Apple', tagline: 'Think Different', logo: brandlogo, color: '#FF9900', bg: '#f5f5f7' },
     { name: 'Google', tagline: 'Organize Information', logo: brandlogo, color: '#4285F4', bg: '#f1f3f4' },
     { name: 'Microsoft', tagline: 'Empower Everyone', logo: brandlogo, color: '#00A4EF', bg: '#f3f2f1' },
     { name: 'Amazon', tagline: 'Work Hard', logo: brandlogo, color: '#FF9900', bg: '#fef9f3' },
@@ -74,36 +74,104 @@ brandlogowhite,
     { name: 'Adobe', tagline: 'Creativity For All', logo: brandlogo, color: '#FF0000', bg: '#fef5f5' },
   ];
 
-  const navItems = [
+const navItems = [
     { 
       name: 'About', 
       path: '/about',
       hasDropdown: true,
-      subItems: ['Our Story', 'Our Team', 'Methodology']
+      subItems: [
+        { name: "About Us", path: "/about" },
+        { name: "Our Approach", path: "/about/our-approach" },
+        { name: "Pricing Options", path: "/about/pricing" },
+        { name: "Our Clients", path: "/about/clients" },
+        { name: "Success Stories", path: "/about/success-stories" },
+        { name: "Client Feedback", path: "/about/feedback" }
+      ]
     },
     { 
       name: 'Services', 
       path: '/services',
       hasDropdown: true,
-      subItems: ['Digital Marketing', 'Web Development', 'UI/UX Design', 'SEO']
+      subItems: [
+        { name: "SEO", path: "/services/seo" },
+        { name: "SMM Service", path: "/services/smm" },
+        { name: "Google ADS Service", path: "/services/google-ads" },
+        { name: "Website Development", path: "/services/website-development" },
+        { name: "Visual Production", path: "/services/visual-production" },
+        { name: "Branding", path: "/services/branding" }
+      ]
     },
     { 
       name: 'Works', 
       path: '/works',
       hasDropdown: true,
-      subItems: ['Case Studies', 'Recent Projects', 'Client Testimonials']
+      subItems: [
+        { name: 'Case Studies', path: '/works/case-studies' },
+        { name: 'Recent Projects', path: '/works/recent-projects' },
+        { name: 'Client Testimonials', path: '/works/testimonials' }
+      ]
     },
     { 
-      name: 'Learn', 
-      path: '/learn',
-      hasDropdown: true,
-      subItems: ['Blog', 'Resources', 'Guides']
-    },
-    { 
-      name: 'Careers', 
-      path: '/careers',
-      hasDropdown: false 
+      name: 'Contact', 
+      path: '/contact',
+      hasDropdown: true, 
+      subItems: [
+        { name: 'Contact', path: '/contact' },
+        { name: 'Career', path: '/contact/career' }
+      ]
     },
   ];
 
-export { img , faqs , brands , navItems};
+  const jobs = [
+    {
+      id: 1,
+      title: 'Senior Creative Director',
+      department: 'Design',
+      location: 'Remote / Kerala',
+      type: 'Full-time',
+      description: 'Lead our creative vision and craft extraordinary brand experiences that push boundaries.',
+    },
+    {
+      id: 2,
+      title: 'Full Stack Developer',
+      department: 'Development',
+      location: 'Hybrid / Thrissur',
+      type: 'Full-time',
+      description: 'Build scalable, performant applications using cutting-edge technologies.',
+    },
+    {
+      id: 3,
+      title: 'Digital Marketing Strategist',
+      department: 'Marketing',
+      location: 'Remote',
+      type: 'Full-time',
+      description: 'Develop data-driven strategies that amplify brand presence and drive measurable growth.',
+    },
+    {
+      id: 4,
+      title: 'UX/UI Designer',
+      department: 'Design',
+      location: 'Thrissur Office',
+      type: 'Full-time',
+      description: 'Create intuitive, delightful interfaces that solve real user problems with elegance.',
+    },
+    {
+      id: 5,
+      title: 'Social Media Manager',
+      department: 'Marketing',
+      location: 'Remote',
+      type: 'Contract',
+      description: 'Engage communities and craft compelling narratives across digital platforms.',
+    },
+    {
+      id: 6,
+      title: 'Project Manager',
+      department: 'Operations',
+      location: 'Hybrid / Thrissur',
+      type: 'Full-time',
+      description: 'Orchestrate complex projects with precision, keeping teams aligned and clients thrilled.',
+    },
+  ];
+
+
+export { img , faqs , brands , navItems , jobs};

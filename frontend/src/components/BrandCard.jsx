@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 
-const BrandCard = ({ brand, index, brandItemsRef, cursorRef }) => {
+const BrandCard = ({ brand, index, brandItemsRef }) => {
   const cardRef = useRef(null);
   const contentRef = useRef(null);
 
   const handleMouseEnter = () => {
+    // Card animation
     gsap.to(cardRef.current, {
       scale: 1.08,
       zIndex: 10,
@@ -19,14 +20,18 @@ const BrandCard = ({ brand, index, brandItemsRef, cursorRef }) => {
       ease: 'power2.out',
     });
 
-    gsap.to(cursorRef.current, {
-      scale: 3,
-      backgroundColor: brand.color,
-      duration: 0.3,
+    // Dispatch custom event to update global cursor
+    const event = new CustomEvent('cursorHover', {
+      detail: { 
+        scale: 3, 
+        color: brand.color 
+      }
     });
+    window.dispatchEvent(event);
   };
 
   const handleMouseLeave = () => {
+    // Card animation
     gsap.to(cardRef.current, {
       scale: 1,
       zIndex: 1,
@@ -40,11 +45,14 @@ const BrandCard = ({ brand, index, brandItemsRef, cursorRef }) => {
       ease: 'power2.out',
     });
 
-    gsap.to(cursorRef.current, {
-      scale: 1,
-      backgroundColor: '#f5a300',
-      duration: 0.3,
+    // Dispatch custom event to reset global cursor
+    const event = new CustomEvent('cursorHover', {
+      detail: { 
+        scale: 1, 
+        color: '#f5a300' 
+      }
     });
+    window.dispatchEvent(event);
   };
 
   return (

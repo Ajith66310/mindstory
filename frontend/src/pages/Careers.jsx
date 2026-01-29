@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, MapPin, Clock, Briefcase } from 'lucide-react';
+import {jobs} from '../assets/assest.js'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,57 +18,7 @@ const Careers = () => {
 
   const departments = ['all', 'Design', 'Development', 'Marketing', 'Operations'];
 
-  const jobs = [
-    {
-      id: 1,
-      title: 'Senior Creative Director',
-      department: 'Design',
-      location: 'Remote / Kerala',
-      type: 'Full-time',
-      description: 'Lead our creative vision and craft extraordinary brand experiences that push boundaries.',
-    },
-    {
-      id: 2,
-      title: 'Full Stack Developer',
-      department: 'Development',
-      location: 'Hybrid / Kochi',
-      type: 'Full-time',
-      description: 'Build scalable, performant applications using cutting-edge technologies.',
-    },
-    {
-      id: 3,
-      title: 'Digital Marketing Strategist',
-      department: 'Marketing',
-      location: 'Remote',
-      type: 'Full-time',
-      description: 'Develop data-driven strategies that amplify brand presence and drive measurable growth.',
-    },
-    {
-      id: 4,
-      title: 'UX/UI Designer',
-      department: 'Design',
-      location: 'Kochi Office',
-      type: 'Full-time',
-      description: 'Create intuitive, delightful interfaces that solve real user problems with elegance.',
-    },
-    {
-      id: 5,
-      title: 'Social Media Manager',
-      department: 'Marketing',
-      location: 'Remote',
-      type: 'Contract',
-      description: 'Engage communities and craft compelling narratives across digital platforms.',
-    },
-    {
-      id: 6,
-      title: 'Project Manager',
-      department: 'Operations',
-      location: 'Hybrid / Kochi',
-      type: 'Full-time',
-      description: 'Orchestrate complex projects with precision, keeping teams aligned and clients thrilled.',
-    },
-  ];
-
+  
   const stats = [
     { number: '50+', label: 'Team Members' },
     { number: '12+', label: 'Countries' },
@@ -226,9 +177,10 @@ const Careers = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+        {/* <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-0.5 h-16 bg-linear-to-b from-[#f5a300] to-transparent" />
-        </div>
+        </div> */}
+
       </section>
 
       {/* Stats Section */}

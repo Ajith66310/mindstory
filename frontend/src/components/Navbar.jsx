@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { X, ChevronDown, ArrowUpRight } from 'lucide-react';
-import { img } from '../assets/assest';
+import { img } from '../assets/assest.js';
 import { navItems } from '../assets/assest.js';
 
 const Navbar = () => {
@@ -15,14 +15,14 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 py-8 bg-transparent">
         <div className="max-w-350 mx-auto px-6 lg:px-12 flex items-center justify-between">
-          
+
           {/* Brand - Left */}
           <div className="flex-1">
             <NavLink to="/">
-              <img 
-                className="h-10 w-auto " 
-                src={img.brandlogo} 
-                alt="Brand Logo" 
+              <img
+                className="h-10 w-auto "
+                src={img.brandlogo}
+                alt="Brand Logo"
               />
             </NavLink>
           </div>
@@ -58,26 +58,25 @@ const Navbar = () => {
 
       {/* Full Screen Overlay Menu */}
       <div
-        className={`fixed inset-0 bg-[#0a0a0a] z-60 transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-        }`}
+        className={`fixed inset-0 bg-[#0a0a0a] z-60 transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+          }`}
       >
         {/* Header inside Overlay */}
         <div className="flex justify-between items-center px-6 lg:px-12 py-8">
-            {/* <span className="text-[#ec9a03] text-sm tracking-widest font-bold">MindStory</span> */}
-            <button 
-              onClick={() => {
-                setIsMenuOpen(false);
-                setActiveDropdown(null);
-              }}
-              className="text-white hover:bg-white/10 p-4 rounded-full transition-all"
-            >
-              <X size={32} strokeWidth={1.5} />
-            </button>
+          {/* <span className="text-[#ec9a03] text-sm tracking-widest font-bold">MindStory</span> */}
+          <button
+            onClick={() => {
+              setIsMenuOpen(false);
+              setActiveDropdown(null);
+            }}
+            className="text-white hover:bg-white/10 p-4 rounded-full transition-all"
+          >
+            <X size={32} strokeWidth={1.5} />
+          </button>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center h-[80%] px-10 gap-10 lg:gap-32">
-          
+
           {/* Main Links List */}
           <nav className="flex flex-col gap-2">
             {navItems.map((item, index) => (
@@ -87,17 +86,16 @@ const Navbar = () => {
                     to={item.path}
                     onClick={() => !item.hasDropdown && setIsMenuOpen(false)}
                     onMouseEnter={() => item.hasDropdown && setActiveDropdown(index)}
-                    className={`text-5xl md:text-8xl font-medium tracking-tighter lowercase transition-all duration-500 ${
-                      activeDropdown === index ? 'text-[#ec9a03] translate-x-4' : 'text-white hover:text-white/50'
-                    }`}
+                    className={`text-5xl md:text-8xl font-medium tracking-tighter lowercase transition-all duration-500 ${activeDropdown === index ? 'text-[#ec9a03] translate-x-4' : 'text-white hover:text-orange-400'
+                      }`}
                   >
                     {item.name}.
                   </NavLink>
-                  
+
                   {item.hasDropdown && (
-                    <ChevronDown 
-                      className={`text-[#ec9a03] transition-transform duration-500 ${activeDropdown === index ? 'rotate-180' : ''}`} 
-                      size={40} 
+                    <ChevronDown
+                      className={`text-[#ec9a03] transition-transform duration-500 ${activeDropdown === index ? 'rotate-180' : ''}`}
+                      size={40}
                     />
                   )}
                 </div>
@@ -112,12 +110,12 @@ const Navbar = () => {
                 <p className="text-[#ec9a03] text-xs font-bold tracking-widest uppercase mb-6 italic">/ Explore</p>
                 {navItems[activeDropdown].subItems.map((sub) => (
                   <NavLink
-                    key={sub}
-                    to="#"
+                    key={sub.name}
+                    to={sub.path}
                     onClick={() => setIsMenuOpen(false)}
                     className="block text-xl md:text-2xl text-white/70 hover:text-white transition-colors"
                   >
-                    {sub}
+                    {sub.name}
                   </NavLink>
                 ))}
               </div>

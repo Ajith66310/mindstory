@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { brands } from '../assets/assest.js';
-// Import the separate component
 import BrandCard from './BrandCard'; 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,29 +11,9 @@ const LeadingBrands = () => {
   const brandsGridRef = useRef(null);
   const titleRef = useRef(null);
   const brandItemsRef = useRef([]);
-  const cursorRef = useRef(null);
-  const cursorDotRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Magnetic cursor effect
-      const handleMouseMove = (e) => {
-        gsap.to(cursorRef.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-        gsap.to(cursorDotRef.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.15,
-          ease: 'power2.out',
-        });
-      };
-
-      window.addEventListener('mousemove', handleMouseMove);
-
       // Title wave animation
       const titleWords = titleRef.current.querySelectorAll('.word');
       gsap.from(titleWords, {
@@ -90,8 +69,6 @@ const LeadingBrands = () => {
           scrub: 1.5,
         },
       });
-
-      return () => window.removeEventListener('mousemove', handleMouseMove);
     }, sectionRef);
 
     return () => ctx.revert();
@@ -102,24 +79,6 @@ const LeadingBrands = () => {
       ref={sectionRef}
       className="relative w-full min-h-screen py-20 md:py-32 bg-linear-to-br from-white via-gray-50 to-white overflow-hidden"
     >
-      {/* Custom Cursor */}
-      <div
-        ref={cursorRef}
-        className="fixed w-12 h-12 rounded-full pointer-events-none z-50 mix-blend-difference"
-        style={{
-          backgroundColor: '#f5a300',
-          transform: 'translate(-50%, -50%)',
-          opacity: 0.6,
-        }}
-      />
-      <div
-        ref={cursorDotRef}
-        className="fixed w-1 h-1 bg-white rounded-full pointer-events-none z-50"
-        style={{
-          transform: 'translate(-50%, -50%)',
-        }}
-      />
-
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 -left-20 w-96 h-96 bg-[#f5a300] rounded-full opacity-10 blur-3xl animate-blob" />
@@ -168,12 +127,10 @@ const LeadingBrands = () => {
                 ${index === 7 ? 'lg:col-span-2' : ''}
               `}
             >
-              {/* Using the separated BrandCard component */}
               <BrandCard 
                 brand={brand} 
                 index={index} 
                 brandItemsRef={brandItemsRef} 
-                cursorRef={cursorRef} 
               />
             </div>
           ))}

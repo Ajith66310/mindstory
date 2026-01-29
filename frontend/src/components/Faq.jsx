@@ -3,6 +3,7 @@ import { faqs } from '../assets/assest.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown } from 'lucide-react'; 
+import { NavLink } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,10 +119,11 @@ const Faq = () => {
         <div className="mt-16 md:mt-20 text-center">
           <p className="text-gray-600 text-base md:text-lg mb-6">
             Still have questions? We're here to help.
-          </p>
+          </p><NavLink to='/contact'>
           <button className="bg-[#f5a300] text-white px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-[#e69500] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
             Contact Us
           </button>
+          </NavLink>
         </div>
       </div>
     </section>
