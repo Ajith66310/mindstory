@@ -1,9 +1,12 @@
 import brandlogo from './brand-logo-img.avif'
 import brandlogowhite from './brand-logo-img-white.avif'
+import company from './company.jpg'
+
 
 
 const img = {
 brandlogo,
+company,
 brandlogowhite,
 }
 

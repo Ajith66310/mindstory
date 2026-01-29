@@ -98,26 +98,7 @@ const Footer = () => {
               </p>
 
               {/* Trust indicators */}
-              <div className="flex flex-wrap gap-6 pt-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-[#f5a300]/10 rounded-lg flex items-center justify-center">
-                    <span className="text-[#f5a300] text-xl">✓</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">5k+ Subscribers</div>
-                    <div className="text-xs text-gray-500">Active community</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-[#f5a300]/10 rounded-lg flex items-center justify-center">
-                    <span className="text-[#f5a300] text-xl">⚡</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-white">Weekly Content</div>
-                    <div className="text-xs text-gray-500">Fresh insights</div>
-                  </div>
-                </div>
-              </div>
+            
             </div>
 
             {/* Right: Newsletter Form */}
@@ -194,7 +175,7 @@ const Footer = () => {
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 relative inline-block">
                 Services
-                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-linear-to-r from-[#f5a300] to-transparent" />
+                <div className="absolute -bottom-2 left-0 w-15 h-0.5  bg-linear-to-r  bg-[#f5a300]" />
               </h3>
               <ul className="space-y-3 text-sm md:text-base">
                 {[
@@ -222,7 +203,7 @@ const Footer = () => {
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 relative inline-block">
                 Company
-                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-linear-to-r from-[#f5a300] to-transparent" />
+                <div className="absolute -bottom-2 left-0 w-15 h-0.5  bg-linear-to-r  bg-[#f5a300]" />
               </h3>
               <ul className="space-y-3 text-sm md:text-base">
                 {[
@@ -250,7 +231,7 @@ const Footer = () => {
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 relative inline-block">
                 Get in Touch
-                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-linear-to-r from-[#f5a300] to-transparent" />
+                <div className="absolute -bottom-2 left-0 w-15 h-0.5  bg-linear-to-r  bg-[#f5a300]" />
               </h3>
               <div className="space-y-4 text-sm md:text-base">
                 
@@ -297,7 +278,7 @@ const Footer = () => {
             <div className="space-y-6">
               <h3 className="text-xl md:text-2xl font-bold text-white mb-6 relative inline-block">
                 Follow Us
-                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-linear-to-r from-[#f5a300] to-transparent" />
+                <div className="absolute -bottom-2 left-0 w-15 h-0.5  bg-linear-to-r  bg-[#f5a300]" />
               </h3>
               
               {/* Social Icons */}
