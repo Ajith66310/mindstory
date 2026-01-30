@@ -82,14 +82,6 @@ const LeadingBrands = () => {
 
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#f5a300]/10 rounded-full border border-[#f5a300]/20">
-            <div className="w-2 h-2 bg-[#f5a300] rounded-full animate-pulse" />
-            <span className="text-xs font-bold text-[#f5a300] uppercase tracking-widest">
-              Our Partners
-            </span>
-          </div>
-        </div>
 
         <div ref={titleRef} className="text-center overflow-hidden">
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">

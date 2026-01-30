@@ -12,11 +12,11 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Main Navbar */}
+ 
       <nav className="fixed top-0 left-0 right-0 z-50 py-8 bg-transparent">
         <div className="max-w-350 mx-auto px-6 lg:px-12 flex items-center justify-between">
 
-          {/* Brand - Left */}
+
           <div className="flex-1">
             <NavLink to="/">
               <img
@@ -27,7 +27,7 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* Center Section*/}
+        
           <div className="flex items-center">
             <button
               onClick={() => setIsMenuOpen(true)}
@@ -43,7 +43,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Contact */}
+  
           <div className="flex-1 flex justify-end">
             <NavLink
               to="/contact"
@@ -56,7 +56,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Full Screen Overlay Menu */}
+   
       <div
         className={`fixed inset-0 bg-[#0a0a0a] z-60 transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
           }`}
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         <div className="flex flex-col lg:flex-row items-center justify-center h-[80%] px-10 gap-10 lg:gap-32">
 
-          {/* Main Links List */}
+      
           <nav className="flex flex-col gap-2">
             {navItems.map((item, index) => (
               <div key={item.name} className="relative group">
@@ -103,7 +103,7 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Dynamic Sub-menu (Dropdown Content) */}
+     
           <div className="w-full max-w-xs h-75 flex flex-col justify-center border-l border-white/10 pl-10">
             {activeDropdown !== null && navItems[activeDropdown].hasDropdown ? (
               <div className="space-y-4 animate-in fade-in slide-in-from-left-4 duration-500">

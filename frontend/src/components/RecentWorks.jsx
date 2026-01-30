@@ -75,10 +75,6 @@ const RecentWorks = () => {
         ref={titleRef}
         className="absolute top-20 left-8 md:left-16 lg:left-24 z-20 max-w-2xl pointer-events-none"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 rounded-full border border-amber-500/20 backdrop-blur-sm mb-6">
-          <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-          <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">Our Portfolio</span>
-        </div>
         <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-none">
           Recent <br />
           <span className="bg-linear-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent">
@@ -90,7 +86,7 @@ const RecentWorks = () => {
       {/* Cards Container */}
       <div
         ref={cardsContainerRef}
-        className="absolute top-0 left-0 h-full flex items-center gap-12 px-24 z-10 will-change-transform"
+        className="absolute top-0 left-0 h-full flex items-center gap-12 px-5 z-10 will-change-transform"
       >
         <div className="shrink-0 w-[35vw]" />
 

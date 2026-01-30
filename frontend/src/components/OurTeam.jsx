@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const characters = [
   { id: 1, name: 'Sijo Francis - GENERAL MANAGER', img: img.company },
-  { id: 2, name: 'Harikrishnan - HR MANAGER', img: img.company2},
-  { id: 3, name: 'VinuKumar - HEAD OF OPERATIONS', img:  img.company3},
+  { id: 2, name: 'Harikrishnan - HR MANAGER', img: img.company2 },
+  { id: 3, name: 'VinuKumar - HEAD OF OPERATIONS', img: img.company3 },
   { id: 4, name: 'Anirudhan - FINANCE MANAGER', img: img.company4 },
 ];
 
@@ -34,7 +34,7 @@ export default function OurTeam() {
           start: 'top top',
           end: `+=${totalScroll}`,
           pin: true,
-          pinSpacing: true, 
+          pinSpacing: true,
           scrub: 0.8,
           onUpdate: (self) => {
             const index = Math.round(self.progress * (characters.length - 1));
@@ -43,25 +43,25 @@ export default function OurTeam() {
           onToggle: (self) => {
             gsap.to(imageRef.current, {
               opacity: self.isActive ? 1 : 0,
-              duration: 0.3
+              duration: 0.3,
             });
-          }
-        }
+          },
+        },
       });
     }, containerRef);
 
-    return () => ctx.revert(); 
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="bg-white text-[#0a0a0a] min-h-screen relative">
+    <div className="bg-white text-[#0a0a0a] relative">
       <style>{`
         .list-item-heading { transition: opacity 0.4s ease, transform 0.4s ease; }
         .list-item-index { transition: color 0.4s ease; }
-        
+
         .team-image-container {
           position: fixed;
-          top: 50%;
+          top: 55%;
           right: 5rem;
           transform: translateY(-50%);
           z-index: 50;
@@ -69,17 +69,16 @@ export default function OurTeam() {
           opacity: 0;
         }
 
-        /* Target mobile screens (sm) */
         @media (max-width: 640px) {
           .team-image-container {
             top: 40% !important;
-            bottom: 2rem !important; 
+            bottom: 2rem !important;
             right: 1.5rem !important;
             transform: none !important;
-            width: 250px !important; 
+            width: 250px !important;
             height: 300px !important;
           }
-          
+
           .team-image-container img {
             width: 100% !important;
             height: 100% !important;
@@ -96,28 +95,35 @@ export default function OurTeam() {
         />
       </div>
 
-      <div 
+      <div
         ref={containerRef}
-        className="h-screen px-15 overflow-hidden relative max-sm:px-6" 
+        className="h-screen px-15 overflow-hidden relative max-sm:px-6"
       >
         <div ref={listWrapperRef} className="will-change-transform">
           <div className="flex flex-col gap-2 w-full py-20">
             {characters.map((character, index) => (
               <div
                 key={character.id}
-                ref={el => (listItemsRef.current[index] = el)}
+                ref={(el) => (listItemsRef.current[index] = el)}
                 className={`flex items-center py-4 border-b border-black/10 ${
                   index === characters.length - 1 ? 'border-b-0' : ''
                 }`}
               >
-                <span className={`list-item-index text-sm font-mono ${
-                  index === activeIndex ? 'text-black' : 'text-black/30'
-                }`}>
+                <span
+                  className={`list-item-index text-sm font-mono ${
+                    index === activeIndex ? 'text-black' : 'text-black/30'
+                  }`}
+                >
                   {String(character.id).padStart(2, '0')}
                 </span>
-                <div className={`list-item-heading text-[clamp(24px,5vw,48px)] italic ${
-                  index === activeIndex ? 'opacity-100 translate-x-6' : 'opacity-40'
-                }`}>
+
+                <div
+                  className={`list-item-heading text-[clamp(24px,5vw,48px)] italic ${
+                    index === activeIndex
+                      ? 'opacity-100 translate-x-6'
+                      : 'opacity-40'
+                  }`}
+                >
                   {character.name}
                 </div>
               </div>
