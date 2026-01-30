@@ -79,12 +79,6 @@ const LeadingBrands = () => {
       ref={sectionRef}
       className="relative w-full min-h-screen py-20 md:py-32 bg-linear-to-br from-white via-gray-50 to-white overflow-hidden"
     >
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 -left-20 w-96 h-96 bg-[#f5a300] rounded-full opacity-10 blur-3xl animate-blob" />
-        <div className="absolute top-40 -right-20 w-96 h-96 bg-blue-400 rounded-full opacity-10 blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-20 left-1/3 w-96 h-96 bg-purple-400 rounded-full opacity-10 blur-3xl animate-blob animation-delay-4000" />
-      </div>
 
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">

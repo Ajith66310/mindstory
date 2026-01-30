@@ -20,7 +20,6 @@ const BrandCard = ({ brand, index, brandItemsRef }) => {
       ease: 'power2.out',
     });
 
-    // Dispatch custom event to update global cursor
     const event = new CustomEvent('cursorHover', {
       detail: { 
         scale: 3, 

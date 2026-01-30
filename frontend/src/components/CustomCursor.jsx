@@ -11,7 +11,6 @@ const CustomCursor = () => {
       gsap.to(cursorDotRef.current, { x: e.clientX, y: e.clientY, duration: 0.15 });
     };
 
-    // Global Listeners for hover state
     const handleCursorHover = (e) => {
       const { scale, color } = e.detail;
       gsap.to(cursorRef.current, {
