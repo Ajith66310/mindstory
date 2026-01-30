@@ -1,10 +1,10 @@
 import brandlogo from './brand-logo-img.avif'
 import brandlogowhite from './brand-logo-img-white.avif'
 import company from './company.jpg'
-import company2 from './company2.AVIF'
-import company3 from './company3.AVIF'
-import company4 from './company4.AVIF'
-import company5 from './company5.AVIF'
+import company2 from './company2.avif'
+import company3 from './company3.avif'
+import company4 from './company4.avif'
+import company5 from './company5.avif'
 
 
 
