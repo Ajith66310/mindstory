@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { img } from '../assets/assest';
+import ElastiicLine from './ElasticLine';
+
 
 const services = [
   { id: 'seo', title: 'SEO', fullName: 'Search Engine Optimization', details: ['Google My Business Optimization', 'E-commerce SEO (Shopify/Woo)', 'High-Authority Link Building', 'Global Market Outreach'], image: img.company2 },
@@ -57,16 +59,21 @@ const Services = () => {
     <section className="min-h-screen bg-[#fafafa] py-12 md:py-32 px-6 md:px-16 lg:px-24 font-sans selection:bg-black selection:text-white">
       <div className="max-w-350 mx-auto">
         
-        {/* Header Section */}
-        <div className="flex justify-between items-end mb-16 lg:mb-24 border-b border-gray-200 pb-10">
-          <div className="overflow-hidden">
-            <h2 className="text-xs font-black tracking-[0.4em] text-gray-400 uppercase">
-              Selected Capabilities
-            </h2>
+        <div className="flex flex-col mb-16 lg:mb-24">
+          <div className="flex justify-between items-end">
+            <div className="overflow-hidden">
+              <h2 className="text-xs font-black tracking-[0.4em] text-gray-400 uppercase">
+                Selected Capabilities
+              </h2>
+            </div>
+            <span className="text-sm font-mono text-gray-400 font-bold hidden md:block">
+              [{activeIndex + 1} &mdash; {services.length}]
+            </span>
           </div>
-          <span className="text-sm font-mono text-gray-400 font-bold hidden md:block">
-            [{activeIndex + 1} &mdash; {services.length}]
-          </span>
+          
+          <div className="w-full -mt-4">
+        <ElastiicLine/>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-10 items-start">
@@ -96,7 +103,6 @@ const Services = () => {
                     <ChevronDown className={`lg:hidden transition-transform duration-500 ${activeIndex === index ? 'rotate-180' : ''}`} />
                   </button>
 
-                  {/* Mobile Dropdown  */}
                   <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-200 pb-10' : 'max-h-0'}`}>
                     <div className="space-y-8 pt-4">
                       <ul className="space-y-4">
@@ -143,15 +149,6 @@ const Services = () => {
                   alt={services[activeIndex].title}
                   className="w-full h-full object-cover opacity-80 transition-transform duration-[2.5s] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="bg-white text-black px-8 py-4 rounded-full font-black uppercase tracking-tighter flex items-center gap-3 scale-75 group-hover:scale-100 transition-transform duration-500">
-                    Explore Case Study <ArrowRight size={20} />
-                  </div>
-                </div>
-                <div className="absolute bottom-8 left-8 text-white pointer-events-none">
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 text-orange-400">Industry Standard</p>
-                  <p className="text-2xl font-black">2024&mdash;25 Edition</p>
-                </div>
               </div>
             </div>
           </div>

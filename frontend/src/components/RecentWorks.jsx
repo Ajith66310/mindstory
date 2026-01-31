@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { img } from '../assets/assest.js';
+import ElastiicLine from './ElasticLine.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,9 +75,9 @@ const RecentWorks = () => {
 
   return (
     <div ref={page1Ref} className="relative w-full h-screen overflow-hidden bg-[#fafafa]">
-      
+    
       {/* HEADING */}
-      <div className="absolute top-24 left-8 md:left-16 lg:left-24 z-20 select-none pointer-events-none leading-[0.8]">
+      <div className="absolute top-24 left-8 md:left-16 lg:left-24 z-5 select-none pointer-events-none leading-[0.8]">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
             <span className="block text-[12vw] lg:text-[9vw] font-black tracking-[-0.05em] text-black uppercase">
@@ -106,7 +107,7 @@ const RecentWorks = () => {
             className="work-card relative shrink-0 group"
             style={{ width: 'min(450px, 28vw)', minWidth: '350px', height: '65vh' }}
           >
-            <div className="relative h-full w-full rounded-3xl overflow-hidden bg-white border border-gray-100 transition-all duration-700 group-hover:-translate-y-4 shadow-xl">
+            <div className="relative h-full w-full rounded-3xl overflow-hidden bg-white border border-gray-100 transition-all duration-700  shadow-xl">
               <img
                 src={work.image}
                 alt={work.company}
@@ -127,6 +128,7 @@ const RecentWorks = () => {
           </div>
         ))}
         {/* End Spacer */}
+        
         <div className="shrink-0 w-[20vw]" />
       </div>
 

@@ -5,6 +5,11 @@ import company2 from './company2.avif'
 import company3 from './company3.avif'
 import company4 from './company4.avif'
 import company5 from './company5.avif'
+import tm1 from './tm1.png'
+import tm2 from './tm2.png'
+import tm3 from './tm3.png'
+import tm4 from './tm4.png'
+import arrow from './arrow.svg'
 
 
 
@@ -16,6 +21,11 @@ const img = {
   brandlogo,
   company,
   brandlogowhite,
+  tm1,
+  tm2,
+  tm3,
+  tm4,
+  arrow
 }
 
   const faqs = [

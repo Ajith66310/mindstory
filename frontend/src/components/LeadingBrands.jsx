@@ -2,13 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { brands } from '../assets/assest.js';
-import BrandCard from './BrandCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LeadingBrands = () => {
   const sectionRef = useRef(null);
-  const brandsGridRef = useRef(null);
+  const brandsContainerRef = useRef(null);
   const headingLine1 = useRef(null);
   const headingLine2 = useRef(null);
   const brandItemsRef = useRef([]);
@@ -40,30 +39,34 @@ const LeadingBrands = () => {
 
       brandItemsRef.current.forEach((item, i) => {
         if (item) {
-          gsap.from(item, {
+          gsap.fromTo(item, 
+            { opacity: 0, x: i % 2 === 0 ? -40 : 40 }, 
+            {
+              opacity: 1,
+              x: 0,
+              duration: 1.2,
+              ease: "power4.out",
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 95%',
+              },
+              delay: (i % 3) * 0.1
+            }
+          );
+
+          gsap.to(item, {
+            x: i % 2 === 0 ? 20 : -20,
+            ease: "none",
             scrollTrigger: {
               trigger: item,
-              start: 'top 90%',
-            },
-            scale: 0.8,
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: (i % 5) * 0.1,
-            ease: 'expo.out',
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
+            }
           });
         }
       });
 
-      gsap.to(brandsGridRef.current, {
-        y: -60,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -74,7 +77,7 @@ const LeadingBrands = () => {
       ref={sectionRef}
       className="relative w-full min-h-screen py-24 md:py-40 bg-[#fafafa] overflow-hidden selection:bg-black selection:text-white"
     >
-      {/*  HEADING*/}
+      {/* HEADING */}
       <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mb-32 leading-[0.8] select-none">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
@@ -91,7 +94,6 @@ const LeadingBrands = () => {
           </div>
         </div>
 
-        {/* Subtle Subtext */}
         <div className="mt-12 max-w-2xl ml-auto text-right">
           <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
             Partnering with visionaries to redefine digital excellence
@@ -100,30 +102,26 @@ const LeadingBrands = () => {
         </div>
       </div>
 
-      {/* Brands Grid */}
-      <div ref={brandsGridRef} className="max-w-350 mx-auto px-6 md:px-16 lg:px-24">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+      <div ref={brandsContainerRef} className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mb-48">
+        <div className="flex flex-wrap gap-x-12 gap-y-8 md:gap-x-20 md:gap-y-16 justify-center items-center">
           {brands.map((brand, index) => (
             <div
               key={index}
-              className={`
-                ${index === 0 ? 'lg:col-span-2 lg:row-span-2' : ''}
-                ${index === 4 ? 'lg:col-span-2' : ''}
-              `}
+              ref={(el) => (brandItemsRef.current[index] = el)}
+              className="group cursor-default"
             >
-              <BrandCard
-                brand={brand}
-                index={index}
-                brandItemsRef={brandItemsRef}
-              />
+              <h4 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-300 group-hover:text-black transition-colors duration-500 lowercase tracking-tighter">
+                {brand.name || "Brand"} 
+                <span className="text-[#f5a300] opacity-0 group-hover:opacity-100 transition-opacity">.</span>
+              </h4>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Stats section  */}
+      {/* Stats section */}
       <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mt-48 border-t border-gray-200 pt-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="flex flex-row justify-between ">
           {[
             { num: '10+', label: 'Years Experience' },
             { num: '500+', label: 'Happy Clients' },

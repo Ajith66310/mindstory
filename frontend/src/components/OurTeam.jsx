@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { img } from '../assets/assest';
+import ElastiicLine from './ElasticLine';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const characters = [
-  { id: 1, name: 'Sijo Francis - GENERAL MANAGER', img: img.company },
-  { id: 2, name: 'Harikrishnan - HR MANAGER', img: img.company2 },
-  { id: 3, name: 'VinuKumar - HEAD OF OPERATIONS', img: img.company3 },
-  { id: 4, name: 'Anirudhan - FINANCE MANAGER', img: img.company4 },
+  { id: 1, name: 'Sijo Francis - GENERAL MANAGER', img: img.tm1 },
+  { id: 2, name: 'Harikrishnan - HR MANAGER', img: img.tm2 },
+  { id: 3, name: 'VinuKumar - HEAD OF OPERATIONS', img: img.tm3 },
+  { id: 4, name: 'Anirudhan - FINANCE MANAGER', img: img.tm4 },
 ];
 
 export default function OurTeam() {
@@ -54,7 +55,7 @@ export default function OurTeam() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: `+=${totalScroll * 2}`, 
+          end: `+=${totalScroll * 2}`,
           pin: true,
           pinSpacing: true,
           scrub: 0.8,
@@ -83,7 +84,7 @@ export default function OurTeam() {
 
         .team-image-container {
           position: fixed;
-          top: 54%;
+          top: 65%;
           right: 2rem;
           transform: translateY(-50%);
           z-index: 50;
@@ -91,15 +92,27 @@ export default function OurTeam() {
           opacity: 0;
         }
 
-        @media (max-width: 768px) {
+       @media (max-width: 640px) {
           .team-image-container {
-            display: none !important; /* Forces hide on mobile/tablets */
+            top: 60% !important;
+            bottom: 2rem !important; 
+            bottom: 2rem !important;
+            right: -10px !important;
+            transform: none !important;
+            width: 250px !important; 
+            width: 250px !important;
+            height: 300px !important;
           }
+
+          .team-image-container img {
+            width: 100% !important;
+            height: 100% !important;
         }
+
       `}</style>
 
       {/*  IMAGE CONTAINER  */}
-      <div ref={imageRef} className="team-image-container hidden md:block">
+      <div ref={imageRef} className="team-image-container block">
         <img
           src={characters[activeIndex >= 0 ? activeIndex : 0]?.img}
           alt="Team member"
@@ -108,7 +121,7 @@ export default function OurTeam() {
         />
       </div>
 
-      <div ref={containerRef} className="min-h-screen px-6 md:px-16 lg:px-24 py-24">
+      <div ref={containerRef} className="min-h-70 px-6 md:px-16 lg:px-24 py-24">
 
         {/*  MASSIVE HEADING */}
         <div className="mb-24 leading-[0.8] select-none pointer-events-none">
@@ -147,8 +160,8 @@ export default function OurTeam() {
 
                   <div
                     className={`list-item-heading text-[clamp(28px,6vw,80px)] font-black tracking-tighter uppercase leading-none transition-all duration-500 ${index === activeIndex
-                        ? 'opacity-100 translate-x-8 italic'
-                        : 'opacity-10'
+                      ? 'opacity-100 translate-x-8 italic'
+                      : 'opacity-10'
                       }`}
                   >
                     {character.name.split(' - ')[0]}
@@ -161,6 +174,9 @@ export default function OurTeam() {
             </div>
           </div>
         </div>
+            <div className="w-full -mt-4">
+        <ElastiicLine/>
+          </div>
       </div>
 
       <style jsx>{`
