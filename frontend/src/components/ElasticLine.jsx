@@ -1,11 +1,15 @@
-import { useRef } from "react";
-import gsap from 'gsap'
- const ElastiicLine = () => {
+import { useRef, useState } from "react";
+import gsap from 'gsap';
+
+const ElastiicLine = () => {
   const svgRef = useRef(null);
   const pathRef = useRef(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const baseLine = "M 0 50 Q 500 50 1000 50";
 
   const handleMouseMove = (e) => {
+    if (!hasInteracted) setHasInteracted(true);
+    
     const { left, width, top } = svgRef.current.getBoundingClientRect();
     const mouseX = ((e.clientX - left) / width) * 1000;
     const mouseY = e.clientY - top;
@@ -28,10 +32,23 @@ import gsap from 'gsap'
 
   return (
     <div 
-      className="w-full h-20 flex items-center cursor-pointer overflow-visible"
+      className="relative w-full h-32 flex items-center justify-center cursor-pointer overflow-visible"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Visual Hint Layer */}
+      <div 
+        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 pointer-events-none ${
+          hasInteracted ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="animate-pulse flex flex-col items-center gap-2">
+          <p className="text-[11px] font-medium tracking-[0.2em] text-gray-500 uppercase">
+            Touch and Hold
+          </p>
+        </div>
+      </div>
+
       <svg 
         ref={svgRef}
         width="100%" 
@@ -51,6 +68,5 @@ import gsap from 'gsap'
     </div>
   );
 };
-
 
 export default ElastiicLine;
