@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { brands } from '../assets/assest.js';
+import ElastiicLine from './ElasticLine.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,8 +40,8 @@ const LeadingBrands = () => {
 
       brandItemsRef.current.forEach((item, i) => {
         if (item) {
-          gsap.fromTo(item, 
-            { opacity: 0, x: i % 2 === 0 ? -40 : 40 }, 
+          gsap.fromTo(item,
+            { opacity: 0, x: i % 2 === 0 ? -40 : 40 },
             {
               opacity: 1,
               x: 0,
@@ -111,7 +112,7 @@ const LeadingBrands = () => {
               className="group cursor-default"
             >
               <h4 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-300 group-hover:text-black transition-colors duration-500 lowercase tracking-tighter">
-                {brand.name || "Brand"} 
+                {brand.name || "Brand"}
                 <span className="text-[#f5a300] opacity-0 group-hover:opacity-100 transition-opacity">.</span>
               </h4>
             </div>
@@ -120,7 +121,10 @@ const LeadingBrands = () => {
       </div>
 
       {/* Stats section */}
-      <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mt-48 border-t border-gray-200 pt-20">
+      <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mt-48 pt-20">
+        <div className="w-full -mt-4">
+          <ElastiicLine />
+        </div>
         <div className="flex flex-row justify-between ">
           {[
             { num: '10+', label: 'Years Experience' },

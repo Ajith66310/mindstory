@@ -28,10 +28,10 @@ const Navbar = () => {
           </div>
 
         
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="flex items-center gap-6 px-8 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-500 group"
+              className="flex items-center gap-6 px-8 py-4 bg-white/10 lg:backdrop-blur-xl border border-white/20 rounded-full lg:hover:bg-white hover:text-black transition-all duration-500 group"
             >
               <span className="text-xs font-bold tracking-[0.3em] uppercase text-black">
                 MENU

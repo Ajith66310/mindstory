@@ -30,7 +30,6 @@ const Services = () => {
     const target = menuRefs.current[index];
     
     if (window.innerWidth >= 1024) {
-      // Move Indicator Dot
       if (target && dotRef.current) {
         const { offsetTop, offsetHeight } = target;
         gsap.to(dotRef.current, {
@@ -40,7 +39,6 @@ const Services = () => {
         });
       }
 
-      // Animate Center Content (Reveal Effect)
       if (contentRef.current) {
         gsap.fromTo(contentRef.current, 
           { opacity: 0, y: 40, clipPath: 'inset(100% 0% 0% 0%)' },
@@ -48,7 +46,6 @@ const Services = () => {
         );
       }
 
-      // Animate Image (Slide/Fade)
       if (imageRef.current) {
         gsap.fromTo(imageRef.current,
           { opacity: 0, scale: 0.9, x: 20 },
@@ -56,7 +53,6 @@ const Services = () => {
         );
       }
 
-      // Stagger list items
       gsap.fromTo(".capability-item", 
         { opacity: 0, x: -20 },
         { opacity: 1, x: 0, duration: 0.6, stagger: 0.08, ease: "power3.out", delay: 0.2 }
@@ -85,10 +81,8 @@ const Services = () => {
           </div>
         </div>
 
-        {/* 3-Column Layout for LG screens */}
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           
-          {/* COLUMN 1: Heading Titles (Left) */}
           <div className="lg:col-span-5 relative">
             <div 
               ref={dotRef}
@@ -129,7 +123,6 @@ const Services = () => {
             </nav>
           </div>
 
-          {/* COLUMN 2: Center Content (Details) */}
           <div className="hidden lg:block lg:col-span-3 sticky top-40" ref={contentRef}>
             <div className="space-y-8">
               <div>
@@ -151,7 +144,6 @@ const Services = () => {
             </div>
           </div>
 
-          {/* COLUMN 3: Right Content (Image) */}
           <div className="hidden lg:block lg:col-span-4 sticky top-40" ref={imageRef}>
             <div className="relative group overflow-hidden rounded-2xl aspect-3/4 bg-gray-200">
               <img
@@ -161,7 +153,6 @@ const Services = () => {
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
               
-              {/* Floating Action Button inside Image */}
               <div className="absolute bottom-6 right-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                 <div className="bg-white p-4 rounded-full shadow-xl">
                   <ArrowRight className="text-black" size={24} />
