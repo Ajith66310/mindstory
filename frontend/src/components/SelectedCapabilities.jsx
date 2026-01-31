@@ -13,7 +13,7 @@ const services = [
   { id: 'web-dev', title: 'WEB', fullName: 'Web Development', details: ['Responsive Business Websites', 'Custom E-commerce Stores', 'Landing Page Optimization', 'UI/UX Design'], image: img.company4 }
 ];
 
-const Services = () => {
+const SelectedCapabilities = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const dotRef = useRef(null);
   const menuRefs = useRef([]);
@@ -167,4 +167,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default SelectedCapabilities;
