@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { img } from '../assets/assest.js';
-import ElastiicLine from './ElasticLine.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +37,6 @@ const RecentWorks = () => {
           end: () => `+=${scrollDistance + window.innerHeight}`, 
           scrub: 1,
           pin: true,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
         }
       });
