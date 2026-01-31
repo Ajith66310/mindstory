@@ -1,6 +1,7 @@
 import brandlogo from './brand-logo-img.avif'
 import brandlogowhite from './brand-logo-img-white.avif'
 import company from './company.jpg'
+import black from './black.jpg'
 import company2 from './company2.avif'
 import company3 from './company3.avif'
 import company4 from './company4.avif'
@@ -25,7 +26,8 @@ const img = {
   tm2,
   tm3,
   tm4,
-  arrow
+  arrow,
+  black
 }
 
   const faqs = [

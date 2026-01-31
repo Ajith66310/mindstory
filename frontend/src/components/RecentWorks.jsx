@@ -105,7 +105,7 @@ const RecentWorks = () => {
             className="work-card relative shrink-0 group"
             style={{ width: 'min(450px, 28vw)', minWidth: '350px', height: '65vh' }}
           >
-            <div className="relative h-full w-full rounded-3xl overflow-hidden bg-white border border-gray-100 transition-all duration-700  shadow-xl">
+            <div className="relative h-full w-full rounded overflow-hidden bg-white border border-gray-100 transition-all duration-700  shadow-xl">
               <img
                 src={work.image}
                 alt={work.company}

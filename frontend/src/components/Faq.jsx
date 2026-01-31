@@ -75,7 +75,7 @@ const Faq = () => {
   }, [activeIndex]);
 
   return (
-    <section ref={sectionRef} className="w-full py-16 md:py-24 bg-white px-6 mt-20 md:px-12 lg:px-24 overflow-hidden">
+    <section ref={sectionRef} className="w-full py-16 md:py-24 bg-[#fafafa] px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         {/* --- BRAND STYLE HEADING --- */}

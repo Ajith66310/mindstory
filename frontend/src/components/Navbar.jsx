@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="max-w-350 mx-auto px-6 lg:px-12 flex items-center justify-between">
 
 
-          <div className="flex-1">
+          {/* <div className="flex-1">
             <NavLink to="/">
               <img
                 className="h-10 w-auto "
@@ -25,13 +25,13 @@ const Navbar = () => {
                 alt="Brand Logo"
               />
             </NavLink>
-          </div>
+          </div> */}
 
         
           <div className="flex items-center ">
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="flex items-center gap-6 px-8 py-4 bg-white/10 lg:backdrop-blur-xl border border-white/20 rounded-full lg:hover:bg-white hover:text-black transition-all duration-500 group"
+              className="flex items-center gap-6 px-8 py-4   hover:text-black transition-all duration-500 group"
             >
               <span className="text-xs font-bold tracking-[0.3em] uppercase text-black">
                 MENU
