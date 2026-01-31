@@ -33,10 +33,10 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(true)}
               className="flex items-center gap-6 px-8 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-500 group"
             >
-              <span className="text-xs font-bold tracking-[0.3em] uppercase text-orange-400">
+              <span className="text-xs font-bold tracking-[0.3em] uppercase text-black">
                 MENU
               </span>
-              <div className="flex flex-col gap-1 items-end text-orange-400">
+              <div className="flex flex-col gap-1 items-end text-black">
                 <span className="w-6 h-0.5 bg-current group-hover:w-4 transition-all "></span>
                 <span className="w-6 h-0.5 bg-current"></span>
               </div>

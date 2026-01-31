@@ -2,71 +2,66 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { brands } from '../assets/assest.js';
-import BrandCard from './BrandCard'; 
+import BrandCard from './BrandCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LeadingBrands = () => {
   const sectionRef = useRef(null);
   const brandsGridRef = useRef(null);
-  const titleRef = useRef(null);
+  const headingLine1 = useRef(null);
+  const headingLine2 = useRef(null);
   const brandItemsRef = useRef([]);
 
   useEffect(() => {
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
     const ctx = gsap.context(() => {
-      // Title wave animation
-      const titleWords = titleRef.current.querySelectorAll('.word');
-      gsap.from(titleWords, {
+
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: titleRef.current,
+          trigger: sectionRef.current,
           start: 'top 80%',
-        },
-        y: 100,
-        opacity: 0,
-        rotationX: -45,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'power4.out',
+        }
       });
 
-      // Grid items scale and fade in
+      tl.fromTo(
+        headingLine1.current,
+        { clipPath: 'inset(100% 0% 0% 0%)', y: 120 },
+        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.4, ease },
+        0.1
+      );
+
+      tl.fromTo(
+        headingLine2.current,
+        { clipPath: 'inset(100% 0% 0% 0%)', y: 120, x: -30 },
+        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, x: 0, duration: 1.5, ease },
+        0.25
+      );
+
       brandItemsRef.current.forEach((item, i) => {
         if (item) {
           gsap.from(item, {
             scrollTrigger: {
               trigger: item,
-              start: 'top 85%',
+              start: 'top 90%',
             },
-            scale: 0.7,
+            scale: 0.8,
             opacity: 0,
-            y: 80,
-            rotation: Math.random() * 20 - 10,
-            duration: 1.2,
+            y: 50,
+            duration: 1,
             delay: (i % 5) * 0.1,
-            ease: 'back.out(1.5)',
-          });
-
-          // Continuous floating animation
-          gsap.to(item, {
-            y: '+=15',
-            rotation: '+=3',
-            duration: 3 + Math.random() * 2,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            delay: i * 0.2,
+            ease: 'expo.out',
           });
         }
       });
 
-      // Parallax scroll effect on entire grid
       gsap.to(brandsGridRef.current, {
-        y: -100,
+        y: -60,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top top',
+          start: 'top bottom',
           end: 'bottom top',
-          scrub: 1.5,
+          scrub: 1,
         },
       });
     }, sectionRef);
@@ -75,82 +70,71 @@ const LeadingBrands = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="relative w-full min-h-screen py-20 md:py-32 bg-linear-to-br from-white via-gray-50 to-white overflow-hidden"
+      className="relative w-full min-h-screen py-24 md:py-40 bg-[#fafafa] overflow-hidden selection:bg-black selection:text-white"
     >
-
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-
-        <div ref={titleRef} className="text-center overflow-hidden">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">
-            <span className="word inline-block text-gray-900">Brands</span>{' '}
-            <span className="word inline-block text-gray-900">That</span>
-            <br />
-            <span className="word inline-block text-transparent bg-clip-text bg-linear-to-r from-[#f5a300] via-[#ff6b00] to-[#f5a300] bg-size-[200%_auto] animate-gradient">
-              Trust
-            </span>{' '}
-            <span className="word inline-block text-gray-900">Us</span>
-          </h2>
+      {/*  HEADING*/}
+      <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mb-32 leading-[0.8] select-none">
+        <div className="overflow-hidden">
+          <div ref={headingLine1} style={{ willChange: 'transform' }}>
+            <span className="block text-[15vw] lg:text-[11vw] font-black tracking-[-0.05em] text-black uppercase">
+              Brands That
+            </span>
+          </div>
+        </div>
+        <div className="overflow-hidden" style={{ paddingLeft: '5vw' }}>
+          <div ref={headingLine2} style={{ willChange: 'transform' }}>
+            <span className="block text-[15vw] lg:text-[11vw] font-black tracking-[-0.05em] text-transparent bg-clip-text bg-linear-to-r from-[#f5a300] via-[#ff6b00] to-[#f5a300] bg-size-[200%_auto] animate-gradient uppercase italic">
+              Trust Us
+            </span>
+          </div>
         </div>
 
-        <p className="text-center text-gray-600 text-lg md:text-xl mt-8 max-w-3xl mx-auto leading-relaxed">
-          Collaborating with industry pioneers to craft digital experiences 
-          that set new standards in innovation and excellence.
-        </p>
+        {/* Subtle Subtext */}
+        <div className="mt-12 max-w-2xl ml-auto text-right">
+          <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed">
+            Partnering with visionaries to redefine digital excellence
+            and establish market leadership.
+          </p>
+        </div>
       </div>
 
       {/* Brands Grid */}
-      <div ref={brandsGridRef} className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+      <div ref={brandsGridRef} className="max-w-350 mx-auto px-6 md:px-16 lg:px-24">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {brands.map((brand, index) => (
             <div
               key={index}
               className={`
                 ${index === 0 ? 'lg:col-span-2 lg:row-span-2' : ''}
                 ${index === 4 ? 'lg:col-span-2' : ''}
-                ${index === 7 ? 'lg:col-span-2' : ''}
               `}
             >
-              <BrandCard 
-                brand={brand} 
-                index={index} 
-                brandItemsRef={brandItemsRef} 
+              <BrandCard
+                brand={brand}
+                index={index}
+                brandItemsRef={brandItemsRef}
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Marquee text at bottom */}
-      <div className="mt-32 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 px-8">
-              <span className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-linear-to-r from-gray-200 to-gray-300">
-                TRUSTED BY THE BEST
-              </span>
-              <span className="text-6xl md:text-8xl font-black text-[#f5a300]">★</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Stats section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-32">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Stats section  */}
+      <div className="max-w-350 mx-auto px-6 md:px-16 lg:px-24 mt-48 border-t border-gray-200 pt-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {[
             { num: '10+', label: 'Years Experience' },
             { num: '500+', label: 'Happy Clients' },
             { num: '50+', label: 'Countries' },
             { num: '98%', label: 'Success Rate' },
           ].map((stat, i) => (
-            <div key={i} className="text-center group">
-              <div className="text-5xl md:text-6xl font-black mb-2 text-transparent bg-clip-text bg-linear-to-br from-[#f5a300] to-[#ff6b00] group-hover:scale-110 transition-transform duration-500">
+            <div key={i} className="group">
+              <div className="text-6xl md:text-7xl font-black mb-2 text-black tracking-tighter group-hover:text-[#ff6b00] transition-colors duration-500">
                 {stat.num}
               </div>
-              <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold text-center">
+              <div className="text-[10px] text-gray-400 uppercase tracking-[0.3em] font-black">
                 {stat.label}
               </div>
             </div>
@@ -159,26 +143,12 @@ const LeadingBrands = () => {
       </div>
 
       <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(50px, 50px) scale(1.05); }
-        }
-        .animate-blob { animation: blob 20s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
-        }
-        .animate-marquee { animation: marquee 30s linear infinite; }
         @keyframes gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        .animate-gradient { animation: gradient 3s ease infinite; }
+        .animate-gradient { animation: gradient 4s ease infinite; }
       `}</style>
     </section>
   );
