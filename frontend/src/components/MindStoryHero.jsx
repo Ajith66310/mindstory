@@ -6,7 +6,7 @@ import { img } from "../assets/assest";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AwardWinningHero = () => {
+const MindStoryHero = () => {
   const containerRef = useRef();
 
   const splitText = (text) => {
@@ -82,27 +82,24 @@ const AwardWinningHero = () => {
   return (
     <div ref={containerRef} className="relative w-full h-screen bg-[#fafafa] overflow-hidden font-sans text-black">
       
-      {/* Dynamic Background Grid */}
       <div className="absolute inset-0 z-0 flex justify-between px-[10%] opacity-[0.03] pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="w-px h-full bg-black" />
         ))}
       </div>
 
-      {/* Parallax Image Tiles */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        <div className="image-tile image-tile-1 absolute top-[18%] left-[8%] w-48 h-64 grayscale hover:grayscale-0 transition-all duration-700">
+      <div className="absolute inset-0 pointer-events-none z-10 lg:block hidden">
+        <div className="image-tile image-tile-1 absolute top-[26%] left-[8%] w-48 h-64  ">
           <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
         </div>
-        <div className="image-tile image-tile-2 absolute top-[12%] right-[10%] w-40 h-52 shadow-xl">
+        <div className="image-tile image-tile-2 absolute top-[12%] right-[10%] w-40 h-52">
           <img src={img.black} className="w-full h-full object-cover rounded " alt="" />
         </div>
-        <div className="image-tile image-tile-3 absolute bottom-[15%] right-[22%] w-56 h-40 border-12px border-white shadow-2xl">
+        <div className="image-tile image-tile-3 absolute bottom-[15%] right-[22%] w-56 h-40   ">
           <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
         </div>
       </div>
 
-      {/* Hero Header */}
       <div className="relative h-full flex flex-col justify-center items-center z-20">
         <div className="hero-title-main text-center">
           <div className="overflow-hidden mb-6">
@@ -119,13 +116,11 @@ const AwardWinningHero = () => {
           </div>
         </div>
 
-        {/* Floating Scroll Indicator */}
         <div className="absolute bottom-12 flex flex-col items-center gap-3">
           <span className="text-[9px] font-bold uppercase tracking-[0.3em] opacity-40">Keep Scrolling</span>
         </div>
       </div>
 
-      {/* Premium Reveal Layer */}
       <div 
         className="reveal-full absolute inset-0 bg-[#fafafa] z-40 flex items-center justify-center"
         style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
@@ -170,4 +165,4 @@ const AwardWinningHero = () => {
   );
 };
 
-export default AwardWinningHero;
+export default MindStoryHero;
