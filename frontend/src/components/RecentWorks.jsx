@@ -21,7 +21,13 @@ const RecentWorks = () => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
 
-    let ctx = gsap.context(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add({
+      isDesktop: "(min-width: 1024px)",
+      isMobile: "(max-width: 1023px)"
+    }, (context) => {
+      let { isDesktop } = context.conditions;
       const cards = cardsContainerRef.current;
       const page = page1Ref.current;
       const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -30,13 +36,16 @@ const RecentWorks = () => {
 
       const scrollDistance = cards.scrollWidth - window.innerWidth;
 
+      // 1. HEADING ANIMATION TIMELINE
+      // On Mobile: It triggers when the heading hits 80% of the screen.
+      // On Desktop: It stays part of the pinned sequence.
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: page,
-          start: "top top",
-          end: () => `+=${scrollDistance + window.innerHeight}`, 
+          trigger: isDesktop ? page : headingLine1.current,
+          start: isDesktop ? "top top" : "top 85%", 
+          end: isDesktop ? () => `+=${scrollDistance + window.innerHeight}` : "bottom 20%",
           scrub: 1,
-          pin: true,
+          pin: isDesktop, 
           invalidateOnRefresh: true,
         }
       });
@@ -51,41 +60,43 @@ const RecentWorks = () => {
         0.1 
       );
 
-      tl.addLabel("startScrolling", "+=0.5");
+      // 2. CARD SCROLLING (Desktop ONLY)
+      if (isDesktop) {
+        tl.addLabel("startScrolling", "+=0.5");
 
-      tl.to([headingLine1.current, headingLine2.current], {
-        opacity: 0,
-        x: -150,
-        duration: 1,
-        ease: "power2.inOut"
-      }, "startScrolling");
+        tl.to([headingLine1.current, headingLine2.current], {
+          opacity: 0,
+          x: -150,
+          duration: 1,
+          ease: "power2.inOut"
+        }, "startScrolling");
 
-      tl.to(cards, {
-        x: -scrollDistance,
-        ease: "none",
-        duration: 3 
-      }, "startScrolling");
+        tl.to(cards, {
+          x: -scrollDistance,
+          ease: "none",
+          duration: 3 
+        }, "startScrolling");
+      }
+    });
 
-    }, page1Ref);
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
-    <div ref={page1Ref} className="relative w-full h-screen overflow-hidden bg-[#fafafa]">
+    <div ref={page1Ref} className="relative w-full lg:h-screen bg-[#fafafa] overflow-x-hidden lg:overflow-hidden">
     
       {/* HEADING */}
-      <div className="absolute top-24 left-8 md:left-16 lg:left-24 z-5 select-none pointer-events-none leading-[0.8]">
+      <div className="relative lg:absolute pt-24 lg:pt-0 lg:top-24 left-8 md:left-16 lg:left-24 z-5 select-none pointer-events-none leading-[0.8]">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
-            <span className="block text-[12vw] lg:text-[9vw] font-black tracking-[-0.05em] text-black uppercase">
+            <span className="block text-[15vw] lg:text-[9vw] font-black tracking-[-0.05em] text-black uppercase">
               Recent
             </span>
           </div>
         </div>
         <div className="overflow-hidden" style={{ paddingLeft: '4vw' }}>
           <div ref={headingLine2} style={{ willChange: 'transform' }}>
-            <span className="block text-[12vw] lg:text-[9vw] font-black tracking-[-0.05em] text-transparent bg-clip-text bg-linear-to-r from-orange-400 via-orange-600 to-orange-400 bg-size-[200%_auto] animate-gradient uppercase italic">
+            <span className="block text-[15vw] lg:text-[9vw] font-black tracking-[-0.05em] text-transparent bg-clip-text bg-linear-to-r from-orange-400 via-orange-600 to-orange-400 bg-size-[200%_auto] animate-gradient uppercase italic">
               Works
             </span>
           </div>
@@ -95,39 +106,41 @@ const RecentWorks = () => {
       {/* Cards Container */}
       <div
         ref={cardsContainerRef}
-        className="absolute top-0 -left-20 h-full flex items-center gap-12 px-5 z-10 will-change-transform"
+        className="relative lg:absolute top-0 lg:-left-20 w-full lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
       >
-        <div className="shrink-0 w-[60vw]" />
+        {/* Only visible on Desktop to offset cards from heading */}
+        <div className="shrink-0 hidden lg:block w-[60vw]" />
 
-        {works.map((work) => (
-          <div
-            key={work.id}
-            className="work-card relative shrink-0 group"
-            style={{ width: 'min(450px, 28vw)', minWidth: '350px', height: '65vh' }}
-          >
-            <div className="relative h-full w-full rounded overflow-hidden bg-white border border-gray-100 transition-all duration-700  shadow-xl">
-              <img
-                src={work.image}
-                alt={work.company}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end bg-black/20 backdrop-blur-0 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-md">
-                <span className="text-xs font-bold uppercase tracking-widest text-orange-400 mb-2 transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-                  {work.category}
-                </span>
-                <h3 className="text-3xl font-black text-white mb-2 transform translate-y-4 transition-transform duration-500 delay-75 group-hover:translate-y-0">
-                  {work.company}
-                </h3>
-                <p className="text-gray-200 mb-6 transform translate-y-4 transition-transform duration-500 delay-150 group-hover:translate-y-0">
-                  {work.title}
-                </p>
+        {/* 2-column grid on small screen, flex-row on desktop */}
+        <div className="grid grid-cols-2 lg:flex lg:flex-row gap-3 lg:gap-12 w-full lg:w-auto">
+          {works.map((work) => (
+            <div
+              key={work.id}
+              className="work-card relative shrink-0 group w-full lg:w-[min(450px,28vw)] lg:min-w-87.5 aspect-3/4 lg:h-[65vh]"
+            >
+              <div className="relative h-full w-full rounded-lg lg:rounded overflow-hidden bg-white border border-gray-100 transition-all duration-700 shadow-xl">
+                <img
+                  src={work.image}
+                  alt={work.company}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 p-3 lg:p-8 flex flex-col justify-end bg-black/40 lg:bg-black/20 backdrop-blur-0 opacity-100 lg:opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-md">
+                  <span className="text-[8px] lg:text-xs font-bold uppercase tracking-widest text-orange-400 mb-1 lg:mb-2 transform lg:translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                    {work.category}
+                  </span>
+                  <h3 className="text-sm lg:text-3xl font-black text-white mb-0 lg:mb-2 transform lg:translate-y-4 transition-transform duration-500 delay-75 group-hover:translate-y-0">
+                    {work.company}
+                  </h3>
+                  <p className="hidden lg:block text-xs lg:text-base text-gray-200 mb-2 lg:mb-6 transform lg:translate-y-4 transition-transform duration-500 delay-150 group-hover:translate-y-0">
+                    {work.title}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        {/* End Spacer */}
+          ))}
+        </div>
         
-        <div className="shrink-0 w-[20vw]" />
+        <div className="shrink-0 hidden lg:block w-[20vw]" />
       </div>
 
       <style jsx>{`
