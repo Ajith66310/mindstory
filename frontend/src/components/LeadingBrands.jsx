@@ -125,23 +125,6 @@ const LeadingBrands = () => {
         <div className="w-full -mt-4">
           <ElastiicLine />
         </div>
-        <div className="flex flex-row justify-between ">
-          {[
-            { num: '10+', label: 'Years Experience' },
-            { num: '500+', label: 'Happy Clients' },
-            { num: '50+', label: 'Countries' },
-            { num: '98%', label: 'Success Rate' },
-          ].map((stat, i) => (
-            <div key={i} className="group">
-              <div className="text-6xl md:text-7xl font-black mb-2 text-black tracking-tighter group-hover:text-[#ff6b00] transition-colors duration-500">
-                {stat.num}
-              </div>
-              <div className="text-[10px] text-gray-400 uppercase tracking-[0.3em] font-black">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       <style jsx>{`

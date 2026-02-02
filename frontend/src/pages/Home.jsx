@@ -6,11 +6,13 @@ import OurTeam from '../components/OurTeam'
 import Marquee from '../components/Marquee'
 import SelectedCapabilities from '../components/SelectedCapabilities'
 import MindStoryHero from '../components/MindStoryHero'
+import StatsSection from '../components/StatsSection'
 
 const Home = () => {
   return (
     <>
     <MindStoryHero/>
+    <StatsSection/>
     <RecentWorks/>
     <Marquee/>
     <SelectedCapabilities/>

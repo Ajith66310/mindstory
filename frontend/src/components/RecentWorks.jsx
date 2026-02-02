@@ -36,9 +36,7 @@ const RecentWorks = () => {
 
       const scrollDistance = cards.scrollWidth - window.innerWidth;
 
-      // 1. HEADING ANIMATION TIMELINE
-      // On Mobile: It triggers when the heading hits 80% of the screen.
-      // On Desktop: It stays part of the pinned sequence.
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: isDesktop ? page : headingLine1.current,
@@ -60,7 +58,6 @@ const RecentWorks = () => {
         0.1 
       );
 
-      // 2. CARD SCROLLING (Desktop ONLY)
       if (isDesktop) {
         tl.addLabel("startScrolling", "+=0.5");
 
@@ -108,10 +105,8 @@ const RecentWorks = () => {
         ref={cardsContainerRef}
         className="relative lg:absolute top-0 lg:-left-20 w-full lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
       >
-        {/* Only visible on Desktop to offset cards from heading */}
         <div className="shrink-0 hidden lg:block w-[60vw]" />
 
-        {/* 2-column grid on small screen, flex-row on desktop */}
         <div className="grid grid-cols-2 lg:flex lg:flex-row gap-3 lg:gap-12 w-full lg:w-auto">
           {works.map((work) => (
             <div

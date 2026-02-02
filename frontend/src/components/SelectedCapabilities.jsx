@@ -25,7 +25,6 @@ const SelectedCapabilities = () => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Desktop Scroll Animation
       if (window.innerWidth >= 1024) {
         services.forEach((_, index) => {
           ScrollTrigger.create({
@@ -37,7 +36,6 @@ const SelectedCapabilities = () => {
           });
         });
       } else {
-        // Mobile Scroll Animation: Updates active state as you scroll past items
         services.forEach((_, index) => {
           ScrollTrigger.create({
             trigger: menuRefs.current[index],
@@ -56,7 +54,6 @@ const SelectedCapabilities = () => {
   const updateContent = (index, isDesktop = false) => {
     setActiveIndex(index);
 
-    // Only animate the dot and right content if on desktop
     if (isDesktop) {
       const target = menuRefs.current[index];
       if (target && dotRef.current) {
@@ -80,7 +77,6 @@ const SelectedCapabilities = () => {
     }
   };
 
-  // Toggle for mobile clicks
   const handleMobileClick = (index) => {
     if (window.innerWidth < 1024) {
       setActiveIndex(activeIndex === index ? -1 : index);
@@ -127,8 +123,8 @@ const SelectedCapabilities = () => {
                     <ChevronDown className={`lg:hidden transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`} />
                   </div>
 
-                  {/* Mobile Dropdown Content */}
-                  <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-[1000px] opacity-100 pb-10' : 'max-h-0 opacity-0'}`}>
+                  {/* Mobile Content */}
+                  <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-250 opacity-100 pb-10' : 'max-h-0 opacity-0'}`}>
                     <ul className="space-y-4 pt-4">
                       {service.details.map((detail, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-lg font-bold text-gray-700">

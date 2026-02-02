@@ -1,8 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Plus, Hash } from "lucide-react";
-import { img } from "../assets/assest";
+import { ArrowUpRight, Hash } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,19 +26,12 @@ const MindStoryHero = () => {
         stagger: 0.01,
         duration: 1.2,
       })
-      .from(".image-tile", {
-        scale: 0.8,
-        filter: "blur(10px)",
-        opacity: 0,
-        stagger: 0.15,
-        duration: 1.5
-      }, "-=0.8")
       .from(".meta-label", {
         x: -20,
         opacity: 0,
         stagger: 0.1,
         duration: 1
-      }, "-=1");
+      }, "-=0.8");
 
       const mainScroll = gsap.timeline({
         scrollTrigger: {
@@ -58,9 +50,7 @@ const MindStoryHero = () => {
           filter: "blur(15px)",
           y: -100,
         })
-        .to(".image-tile-1", { yPercent: -150, rotate: -15, scale: 0.5 }, 0)
-        .to(".image-tile-2", { yPercent: -120, rotate: 15, scale: 0.5 }, 0)
-        .to(".image-tile-3", { yPercent: -140, xPercent: 50, scale: 0.5 }, 0)
+        // Image animations (tiles 1, 2, 3) have been removed from here
         .to(".reveal-full", {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         }, 0.1)
@@ -82,24 +72,14 @@ const MindStoryHero = () => {
   return (
     <div ref={containerRef} className="relative w-full h-screen bg-[#fafafa] overflow-hidden font-sans text-black">
       
+      {/* Background Grid Lines */}
       <div className="absolute inset-0 z-0 flex justify-between px-[10%] opacity-[0.03] pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <div key={i} className="w-px h-full bg-black" />
         ))}
       </div>
 
-      {/* <div className="absolute inset-0 pointer-events-none z-10 lg:block hidden">
-        <div className="image-tile image-tile-1 absolute top-[26%] left-[8%] w-48 h-64  ">
-          <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
-        </div>
-        <div className="image-tile image-tile-2 absolute top-[12%] right-[10%] w-40 h-52">
-          <img src={img.black} className="w-full h-full object-cover rounded " alt="" />
-        </div>
-        <div className="image-tile image-tile-3 absolute bottom-[15%] right-[22%] w-56 h-40   ">
-          <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
-        </div>
-      </div> */}
-
+      {/* Hero Section */}
       <div className="relative h-full flex flex-col justify-center items-center z-20">
         <div className="hero-title-main text-center">
           <div className="overflow-hidden mb-6">
@@ -109,7 +89,7 @@ const MindStoryHero = () => {
             </div>
           </div>
           <div className="overflow-hidden py-4">
-            <h1 className="text-[14vw] font-black leading-[0.8] tracking-[ -0.05em] uppercase">
+            <h1 className="text-[14vw] font-black leading-[0.8] tracking-[-0.05em] uppercase">
               {splitText("Mind")} <br />
               <span className="text-orange-500 font-light italic">{splitText("Story")}</span>
             </h1>
@@ -121,6 +101,7 @@ const MindStoryHero = () => {
         </div>
       </div>
 
+      {/* Reveal Overlay Section */}
       <div 
         className="reveal-full absolute inset-0 bg-[#fafafa] z-40 flex items-center justify-center"
         style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
@@ -151,7 +132,8 @@ const MindStoryHero = () => {
                 </span>
              </button>
              <p className="text-xs font-medium uppercase tracking-widest opacity-40 max-w-50">
-               Available for worldwide collaboration             </p>
+                Available for worldwide collaboration 
+             </p>
           </div>
         </div>
       </div>
