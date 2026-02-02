@@ -88,7 +88,7 @@ const MindStoryHero = () => {
         ))}
       </div>
 
-      <div className="absolute inset-0 pointer-events-none z-10 lg:block hidden">
+      {/* <div className="absolute inset-0 pointer-events-none z-10 lg:block hidden">
         <div className="image-tile image-tile-1 absolute top-[26%] left-[8%] w-48 h-64  ">
           <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
         </div>
@@ -98,7 +98,7 @@ const MindStoryHero = () => {
         <div className="image-tile image-tile-3 absolute bottom-[15%] right-[22%] w-56 h-40   ">
           <img src={img.black} className="w-full h-full object-cover rounded" alt="" />
         </div>
-      </div>
+      </div> */}
 
       <div className="relative h-full flex flex-col justify-center items-center z-20">
         <div className="hero-title-main text-center">
