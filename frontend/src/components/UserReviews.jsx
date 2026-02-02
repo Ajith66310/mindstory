@@ -32,23 +32,24 @@ export default function UserReviews() {
         </div>
       </div>
 
-      {/*  SWIPER SECTION  */}
-      <div className="w-full flex items-center mb-auto  ml-30 ">
+      {/* SWIPER SECTION  */}
+      <div className="w-full flex items-center mb-auto ml-30">
         <Swiper
           modules={[Mousewheel, FreeMode]}
           spaceBetween={40}
           slidesPerView={'auto'}
           freeMode={true}
           mousewheel={{ forceToAxis: true }}
-          className="w-full px-6 md:px-16 lg:px-24 overflow-visible!"
+          loop={true} // ENABLES INFINITE LOOP
+          className="w-full px-6 md:px-16 lg:px-24 !overflow-visible"
         >
           {reviews.map((review) => (
-            <SwiperSlide key={review.id} className="w-[320px]! md:w-105!">
+            <SwiperSlide key={review.id} className="!w-[320px] md:!w-[420px]">
               <div className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.02)] h-full flex flex-col justify-between group hover:border-orange-200 transition-all duration-500">
                 
                 <div>
                   {/* Google Style Stars */}
-                  <div className="flex gap-1 mb-6  text-orange-500">
+                  <div className="flex gap-1 mb-6 text-orange-500">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={16} fill="currentColor" />
                     ))}
@@ -61,7 +62,7 @@ export default function UserReviews() {
                 </div>
 
                 {/* Profile Section */}
-                <div className="flex items-center gap-4 mt-10 ">
+                <div className="flex items-center gap-4 mt-10">
                   <div className="relative w-14 h-14 shrink-0">
                     <img 
                       src={review.img} 
@@ -84,7 +85,6 @@ export default function UserReviews() {
               </div>
             </SwiperSlide>
           ))}
-          <SwiperSlide className="w-[20vw]!" />
         </Swiper>
       </div>
 
