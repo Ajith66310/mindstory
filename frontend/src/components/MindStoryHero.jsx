@@ -105,7 +105,7 @@ const MindStoryHero = () => {
           <div className="overflow-hidden mb-6">
             <div className="meta-label flex items-center justify-center gap-2">
               <Hash className="text-orange-500" size={14} />
-              <span className="text-[10px] font-black tracking-[0.5em] uppercase opacity-60">Edition 2026</span>
+              <span className="text-[10px] font-black tracking-[0.5em] uppercase opacity-60">DIGITAL MARKETING AGENCY</span>
             </div>
           </div>
           <div className="overflow-hidden py-4">
