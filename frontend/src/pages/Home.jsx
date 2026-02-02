@@ -7,18 +7,20 @@ import Marquee from '../components/Marquee'
 import SelectedCapabilities from '../components/SelectedCapabilities'
 import MindStoryHero from '../components/MindStoryHero'
 import StatsSection from '../components/StatsSection'
+import UserReviews from '../components/UserReviews'
 
 const Home = () => {
   return (
     <>
-    <MindStoryHero/>
-    <StatsSection/>
-    <RecentWorks/>
-    <Marquee/>
-    <SelectedCapabilities/>
-    <LeadingBrands/>
-    <OurTeam/>
-    <Faq/>
+      <MindStoryHero />
+      <StatsSection />
+      <RecentWorks />
+      <Marquee />
+      <SelectedCapabilities />
+      <LeadingBrands />
+      <OurTeam />
+      <UserReviews/>
+      <Faq />
     </>
   )
 }

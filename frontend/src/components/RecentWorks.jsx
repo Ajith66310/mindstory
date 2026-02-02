@@ -16,6 +16,8 @@ const RecentWorks = () => {
     { id: 2, company: 'FinanceHub', title: 'Digital Marketing', category: 'Marketing & Growth', image: img.company2 },
     { id: 3, company: 'EcoLife', title: 'E-commerce Platform', category: 'Web Development', image: img.company3 },
     { id: 4, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company4 },
+    { id: 5, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company2 },
+    { id: 6, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company3 },
   ];
 
   useLayoutEffect(() => {
@@ -103,7 +105,7 @@ const RecentWorks = () => {
       {/* Cards Container */}
       <div
         ref={cardsContainerRef}
-        className="relative lg:absolute top-0 lg:-left-20 w-full lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
+        className="relative lg:absolute top-0 lg:-left-20 w-full  lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
       >
         <div className="shrink-0 hidden lg:block w-[60vw]" />
 
@@ -113,7 +115,7 @@ const RecentWorks = () => {
               key={work.id}
               className="work-card relative shrink-0 group w-full lg:w-[min(450px,28vw)] lg:min-w-87.5 aspect-3/4 lg:h-[65vh]"
             >
-              <div className="relative h-full w-full rounded-lg lg:rounded overflow-hidden bg-white border border-gray-100 transition-all duration-700 shadow-xl">
+              <div className="relative h-full w-full rounded-lg lg:rounded-xl overflow-hidden bg-white border border-gray-100 transition-all duration-700 shadow-xl">
                 <img
                   src={work.image}
                   alt={work.company}

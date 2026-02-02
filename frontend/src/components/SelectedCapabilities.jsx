@@ -160,7 +160,7 @@ const SelectedCapabilities = () => {
               </div>
 
               <div className="col-span-7">
-                <div className="relative group overflow-hidden rounded aspect-4/5 bg-gray-100 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                <div className="relative group overflow-hidden rounded-xl aspect-4/5 bg-gray-100 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
                   <img
                     key={services[activeIndex >= 0 ? activeIndex : 0].image}
                     src={services[activeIndex >= 0 ? activeIndex : 0].image}
