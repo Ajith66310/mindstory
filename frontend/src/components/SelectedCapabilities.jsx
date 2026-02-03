@@ -108,7 +108,7 @@ const SelectedCapabilities = () => {
               style={{ pointerEvents: 'none' }}
             />
 
-            <nav className="flex flex-col border-r border-gray-300/90">
+            <nav className="flex flex-col lg:border-r border-gray-300/90">
               {services.map((service, index) => (
                 <div key={service.id} className="group border-b border-gray-100 lg:border-none">
                   <div

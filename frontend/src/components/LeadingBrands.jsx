@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { img } from '../assets/assest.js'; // Ensure correct import path
+import { img } from '../assets/assest.js';
 import ElastiicLine from './ElasticLine.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,7 +26,6 @@ const LeadingBrands = () => {
     const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
     const ctx = gsap.context(() => {
 
-      // Heading Animation
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -46,10 +45,8 @@ const LeadingBrands = () => {
         0.25
       );
 
-      // Brand Items Animation
       brandItemsRef.current.forEach((item, i) => {
         if (item) {
-          // Entrance
           gsap.fromTo(item,
             { opacity: 0, y: 60 },
             {
@@ -65,7 +62,6 @@ const LeadingBrands = () => {
             }
           );
 
-          // Parallax Scroll
           gsap.to(item, {
             x: i % 2 === 0 ? 30 : -30,
             ease: "none",

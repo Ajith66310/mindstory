@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import { X, ChevronDown, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { img, navItems } from '../assets/assest.js';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-
   const buttonRef = useRef(null);
   const textRef = useRef(null);
+  const dropdownRefs = useRef({});
 
   useEffect(() => {
     if (!buttonRef.current || !textRef.current) return;
@@ -57,110 +56,125 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (activeDropdown !== null) {
+        const dropdown = dropdownRefs.current[activeDropdown];
+        if (dropdown && !dropdown.contains(event.target)) {
+          setActiveDropdown(null);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [activeDropdown]);
+
   return (
-    <>
-      <nav className="fixed top-0 left-0 right-0 z-50 py-8 bg-transparent">
-        <div className="max-w-360 mx-auto px-6 lg:px-12 flex items-center justify-between">
-
-          <div className="flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              className="flex items-center gap-6 px-4 py-2 hover:opacity-70 transition-all duration-500 group"
-            >
-              <span className="text-xs font-bold tracking-[0.3em] uppercase text-black">
-                MENU
-              </span>
-              <div className="flex flex-col gap-1 items-end text-black">
-                <span className="w-6 h-0.5 bg-current group-hover:w-4 transition-all"></span>
-                <span className="w-6 h-0.5 bg-current"></span>
-              </div>
-            </button>
-          </div>
-
-
-          <div className="flex-1 flex justify-end">
-            <NavLink
-              to="/contact"
-              ref={buttonRef}
-              className="group relative hidden md:flex items-center justify-center bg-[#ec9a03] text-black w-40 h-14 rounded-full font-black text-[10px] tracking-[0.2em] uppercase overflow-hidden"
-            >
-       
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-
-              <span ref={textRef} className="relative z-10 flex items-center gap-2">
-                Let's Talk
-                <ArrowUpRight size={16} className="transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110" />
-              </span>
-            </NavLink>
-          </div>
-        </div>
-      </nav>
-
-      <div
-        className={`fixed inset-0 bg-[#0a0a0a] z-60 transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-          }`}
-      >
-        <div className="flex justify-between items-center px-6 lg:px-12 py-8">
-          <button
-            onClick={() => {
-              setIsMenuOpen(false);
-              setActiveDropdown(null);
-            }}
-            className="text-white hover:bg-white/10 p-4 rounded-full transition-all"
-          >
-            <X size={32} strokeWidth={1.5} />
-          </button>
+    <nav className="fixed top-0 left-0 right-0 z-50 py-6 bg-transparent backdrop-blur-sm ">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        
+        {/* Logo */}
+        <div className="flex items-center">
+          <NavLink to="/" className="text-2xl font-black tracking-tight text-black">
+          MINDSTORY
+          </NavLink>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center h-[80%] px-10 gap-10 lg:gap-32">
-          <nav className="flex flex-col gap-2">
-            {navItems.map((item, index) => (
-              <div key={item.name} className="relative group">
-                <div className="flex items-center gap-4">
-                  <NavLink
-                    to={item.path}
-                    onClick={() => !item.hasDropdown && setIsMenuOpen(false)}
-                    onMouseEnter={() => item.hasDropdown && setActiveDropdown(index)}
-                    className={`text-5xl md:text-8xl font-medium tracking-tighter lowercase transition-all duration-500 ${activeDropdown === index ? 'text-[#ec9a03] translate-x-4' : 'text-white hover:text-orange-400'
-                      }`}
-                  >
-                    {item.name}.
-                  </NavLink>
-                  {item.hasDropdown && (
-                    <ChevronDown
-                      className={`text-[#ec9a03] transition-transform duration-500 ${activeDropdown === index ? 'rotate-180' : ''}`}
-                      size={40}
-                    />
-                  )}
+        {/* Navigation Links */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navItems.map((item, index) => (
+            <div
+              key={item.name}
+              ref={(el) => (dropdownRefs.current[index] = el)}
+              className="relative"
+              onMouseEnter={() => item.hasDropdown && setActiveDropdown(index)}
+              onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
+            >
+              {item.hasDropdown ? (
+                <button
+                  className="flex items-center gap-1 text-sm font-semibold tracking-wide uppercase text-black hover:text-[#ec9a03] transition-colors duration-300"
+                >
+                  {item.name}
+                  <ChevronDown 
+                    size={16} 
+                    className={`transition-transform duration-300 ${
+                      activeDropdown === index ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+              ) : (
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `text-sm font-semibold tracking-wide uppercase transition-colors duration-300 ${
+                      isActive ? 'text-[#ec9a03]' : 'text-black hover:text-[#ec9a03]'
+                    }`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              )}
+
+              {/* Dropdown Menu */}
+              {item.hasDropdown && (
+                <div
+                  className={`absolute top-full left-0 mt-2 w-64 bg-white shadow-xl rounded-lg overflow-hidden transition-all duration-300 ${
+                    activeDropdown === index
+                      ? 'opacity-100 translate-y-0 pointer-events-auto'
+                      : 'opacity-0 -translate-y-2 pointer-events-none'
+                  }`}
+                >
+                  <div className="py-2">
+                    {item.subItems.map((subItem) => (
+                      <NavLink
+                        key={subItem.name}
+                        to={subItem.path}
+                        onClick={() => setActiveDropdown(null)}
+                        className={({ isActive }) =>
+                          `block px-6 py-3 text-sm font-medium transition-all duration-200 ${
+                            isActive
+                              ? 'bg-[#ec9a03] text-white'
+                              : 'text-gray-700 hover:bg-gray-50 hover:text-[#ec9a03] hover:pl-8'
+                          }`
+                        }
+                      >
+                        {subItem.name}
+                      </NavLink>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </nav>
+              )}
+            </div>
+          ))}
+        </div>
 
-          <div className="w-full max-w-xs h-75 flex flex-col justify-center border-l border-white/10 pl-10">
-            {activeDropdown !== null && navItems[activeDropdown].hasDropdown ? (
-              <div className="space-y-4">
-                <p className="text-[#ec9a03] text-xs font-bold tracking-widest uppercase mb-6 italic">/ Explore</p>
-                {navItems[activeDropdown].subItems.map((sub) => (
-                  <NavLink
-                    key={sub.name}
-                    to={sub.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block text-xl md:text-2xl text-white/70 hover:text-white transition-colors"
-                  >
-                    {sub.name}
-                  </NavLink>
-                ))}
-              </div>
-            ) : (
-              <div className="opacity-20">
-                <p className="text-white text-sm tracking-[0.2em] uppercase">Select a category to explore our world.</p>
-              </div>
-            )}
-          </div>
+        <div className="flex items-center">
+          <NavLink
+            to="/contact"
+            ref={buttonRef}
+            className="group relative flex items-center justify-center bg-[#ec9a03] text-black w-40 h-14 rounded-full font-black text-[10px] tracking-[0.2em] uppercase overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+
+            <span ref={textRef} className="relative z-10 flex items-center gap-2">
+              Let's Talk
+              <ArrowUpRight 
+                size={16} 
+                className="transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110" 
+              />
+            </span>
+          </NavLink>
         </div>
       </div>
-    </>
+
+      <div className="lg:hidden absolute right-6 top-1/2 -translate-y-1/2">
+        <button className="flex flex-col gap-1.5 p-2">
+          <span className="w-6 h-0.5 bg-black transition-all"></span>
+          <span className="w-6 h-0.5 bg-black transition-all"></span>
+        </button>
+      </div>
+    </nav>
   );
 };
 

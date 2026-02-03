@@ -28,7 +28,6 @@ const AnimatedStats = ({ className = "" }) => {
     const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
     const ctx = gsap.context(() => {
 
-      // --- ROCKET MOTION ---
       gsap.to(rocketRef.current, {
         scrollTrigger: {
           trigger: containerRef.current,
@@ -44,7 +43,6 @@ const AnimatedStats = ({ className = "" }) => {
         }
       });
 
-      // Heading Reveal
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -62,7 +60,6 @@ const AnimatedStats = ({ className = "" }) => {
         0.25
       );
 
-      // Stats Counters
       statsRef.current.forEach((stat, i) => {
         if (!stat) return;
         ScrollTrigger.create({
@@ -105,7 +102,6 @@ const AnimatedStats = ({ className = "" }) => {
       ref={containerRef}
       className={`relative w-full py-24 md:py-40 bg-[#fafafa] overflow-hidden selection:bg-black selection:text-white ${className}`}
     >
-      {/* ROCKET PATH LAYER */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <svg
           width="100%"
@@ -115,7 +111,6 @@ const AnimatedStats = ({ className = "" }) => {
           preserveAspectRatio="none"
           className="opacity-20"
         >
-          {/* Path: Multi-segment Bezier Curve */}
           <path
             ref={rocketPathRef}
             d="M -50,200 
@@ -139,7 +134,6 @@ const AnimatedStats = ({ className = "" }) => {
         </svg>
       </div>
 
-      {/* ... Content remains the same ... */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-24 mb-32 leading-[0.8] select-none text-center md:text-left">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
