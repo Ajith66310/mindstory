@@ -40,11 +40,11 @@ export default function UserReviews() {
           slidesPerView={'auto'}
           freeMode={true}
           mousewheel={{ forceToAxis: true }}
-          loop={true} // ENABLES INFINITE LOOP
-          className="w-full px-6 md:px-16 lg:px-24 !overflow-visible"
+          loop={true} 
+          className="w-full px-6 md:px-16 lg:px-24 overflow-visible!"
         >
           {reviews.map((review) => (
-            <SwiperSlide key={review.id} className="!w-[320px] md:!w-[420px]">
+            <SwiperSlide key={review.id} className="w-[320px]! md:w-105!">
               <div className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.02)] h-full flex flex-col justify-between group hover:border-orange-200 transition-all duration-500">
                 
                 <div>

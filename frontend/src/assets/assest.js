@@ -11,6 +11,12 @@ import tm2 from './tm2.png'
 import tm3 from './tm3.png'
 import tm4 from './tm4.png'
 import arrow from './arrow.svg'
+import client1 from './client1.png'
+import client2 from './client2.png'
+import client3 from './client3.png'
+import client4 from './client4.png'
+import client5 from './client5.png'
+import client6 from './client6.png'
 
 
 
@@ -27,7 +33,13 @@ const img = {
   tm3,
   tm4,
   arrow,
-  black
+  black,
+  client1,
+  client2,
+  client3,
+  client4,
+  client5,
+  client6,
 }
 
   const faqs = [
@@ -84,18 +96,7 @@ const img = {
   ];  
 
 
-    const brands = [
-    { name: 'Apple', tagline: 'Think Different', logo: brandlogo, color: '#FF9900', bg: '#f5f5f7',img:img.company },
-    { name: 'Google', tagline: 'Organize Information', logo: brandlogo, color: '#4285F4', bg: '#f1f3f4' ,img:img.company2},
-    { name: 'Microsoft', tagline: 'Empower Everyone', logo: brandlogo, color: '#00A4EF', bg: '#f3f2f1' ,img:img.company3},
-    { name: 'Amazon', tagline: 'Work Hard', logo: brandlogo, color: '#FF9900', bg: '#fef9f3' ,img:img.company4},
-    { name: 'Tesla', tagline: 'Accelerate Transition', logo: brandlogo, color: '#CC0000', bg: '#fef5f5' ,img:img.company5},
-    { name: 'Nike', tagline: 'Just Do It', logo: brandlogo, color: '#111111', bg: '#f5f5f5' ,img:img.company},
-    { name: 'Coca-Cola', tagline: 'Taste The Feeling', logo: brandlogo, color: '#F40009', bg: '#fef5f5' ,img:img.company2},
-    { name: 'Samsung', tagline: 'Do What You Can\'t', logo: brandlogo, color: '#1428A0', bg: '#f3f5fb' ,img:img.company3},
-    { name: 'Netflix', tagline: 'See What\'s Next', logo: brandlogo, color: '#E50914', bg: '#fef5f6' ,img:img.company4},
-    { name: 'Adobe', tagline: 'Creativity For All', logo: brandlogo, color: '#FF0000', bg: '#fef5f5' ,img:img.company5},
-  ];
+
 
 const navItems = [
     { 
@@ -202,4 +203,4 @@ const navItems = [
   ];
 
 
-export { img , faqs , brands , navItems , jobs};
+export { img , faqs  , navItems , jobs};

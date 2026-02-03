@@ -10,10 +10,11 @@ const RecentWorks = () => {
   const cardsContainerRef = useRef(null);
   const headingLine1 = useRef(null);
   const headingLine2 = useRef(null);
+  const textRecentRef = useRef(null);
 
   const works = [
-    { id: 1, company: 'TechCorp', title: 'Brand Transformation', category: 'Branding & Strategy', image: img.company },
-    { id: 2, company: 'FinanceHub', title: 'Digital Marketing', category: 'Marketing & Growth', image: img.company2 },
+    { id: 1, company: 'TechCorp', title: 'Brand Transformation', category: 'Branding & Strategy', image: img.company2 },
+    { id: 2, company: 'FinanceHub', title: 'Digital Marketing', category: 'Marketing & Growth', image: img.company },
     { id: 3, company: 'EcoLife', title: 'E-commerce Platform', category: 'Web Development', image: img.company3 },
     { id: 4, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company4 },
     { id: 5, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company2 },
@@ -38,26 +39,30 @@ const RecentWorks = () => {
 
       const scrollDistance = cards.scrollWidth - window.innerWidth;
 
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: isDesktop ? page : headingLine1.current,
-          start: isDesktop ? "top top" : "top 85%", 
+          start: isDesktop ? "top top" : "top 85%",
           end: isDesktop ? () => `+=${scrollDistance + window.innerHeight}` : "bottom 20%",
           scrub: 1,
-          pin: isDesktop, 
+          pin: isDesktop,
           invalidateOnRefresh: true,
         }
       });
 
-      tl.fromTo(headingLine1.current, 
+      // 1. Initial State: White to Black + Text to White
+      tl.to(page, { backgroundColor: "#000000", duration: 1, ease: "none" }, 0)
+        .to(textRecentRef.current, { color: "#ffffff", duration: 1, ease: "none" }, 0);
+
+      // Heading Entrance
+      tl.fromTo(headingLine1.current,
         { clipPath: 'inset(100% 0% 0% 0%)', y: 120 },
-        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1, ease }, 
-        0 
+        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1, ease },
+        0
       ).fromTo(headingLine2.current,
         { clipPath: 'inset(100% 0% 0% 0%)', y: 120, x: -30 },
-        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, x: 0, duration: 1.1, ease }, 
-        0.1 
+        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, x: 0, duration: 1.1, ease },
+        0.1
       );
 
       if (isDesktop) {
@@ -70,11 +75,26 @@ const RecentWorks = () => {
           ease: "power2.inOut"
         }, "startScrolling");
 
+        // 2. Horizontal Scroll
         tl.to(cards, {
           x: -scrollDistance,
           ease: "none",
-          duration: 3 
+          duration: 3
         }, "startScrolling");
+
+        // 3. Middle/End: Transition back to #fafafa
+        // We trigger this shortly after the horizontal scroll starts
+        tl.to(page, { 
+          backgroundColor: "#fafafa", 
+          duration: 1.5, 
+          ease: "none" 
+        }, "startScrolling+=1.5");
+
+        tl.to(textRecentRef.current, { 
+          color: "#000000", 
+          duration: 1.5, 
+          ease: "none" 
+        }, "startScrolling+=1.5");
       }
     });
 
@@ -83,12 +103,12 @@ const RecentWorks = () => {
 
   return (
     <div ref={page1Ref} className="relative w-full lg:h-screen bg-[#fafafa] overflow-x-hidden lg:overflow-hidden">
-    
+
       {/* HEADING */}
       <div className="relative lg:absolute pt-24 lg:pt-0 lg:top-24 left-8 md:left-16 lg:left-24 z-5 select-none pointer-events-none leading-[0.8]">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
-            <span className="block text-[15vw] lg:text-[9vw] font-black tracking-[-0.05em] text-black uppercase">
+            <span ref={textRecentRef} className="block text-[15vw] lg:text-[9vw] font-black tracking-[-0.05em] text-black uppercase">
               Recent
             </span>
           </div>
@@ -105,7 +125,7 @@ const RecentWorks = () => {
       {/* Cards Container */}
       <div
         ref={cardsContainerRef}
-        className="relative lg:absolute top-0 lg:-left-20 w-full  lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
+        className="relative lg:absolute top-0 lg:-left-20 w-full lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"
       >
         <div className="shrink-0 hidden lg:block w-[60vw]" />
 
@@ -115,7 +135,7 @@ const RecentWorks = () => {
               key={work.id}
               className="work-card relative shrink-0 group w-full lg:w-[min(450px,28vw)] lg:min-w-87.5 aspect-3/4 lg:h-[65vh]"
             >
-              <div className="relative h-full w-full rounded-lg lg:rounded-xl overflow-hidden bg-white border border-gray-100 transition-all duration-700 shadow-xl">
+              <div className="relative h-full w-full rounded-lg lg:rounded-xl overflow-hidden bg-white transition-all duration-700 shadow-xl">
                 <img
                   src={work.image}
                   alt={work.company}
@@ -136,7 +156,7 @@ const RecentWorks = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="shrink-0 hidden lg:block w-[20vw]" />
       </div>
 

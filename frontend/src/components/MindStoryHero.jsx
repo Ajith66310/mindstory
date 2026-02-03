@@ -50,7 +50,6 @@ const MindStoryHero = () => {
           filter: "blur(15px)",
           y: -100,
         })
-        // Image animations (tiles 1, 2, 3) have been removed from here
         .to(".reveal-full", {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         }, 0.1)
