@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown } from 'lucide-react';
 import { img } from '../assets/assest'; 
 import ElasticLine from './ElasticLine';
 
@@ -17,165 +16,117 @@ const services = [
 ];
 
 const SelectedCapabilities = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
-  const dotRef = useRef(null);
-  const menuRefs = useRef([]);
-  const rightContentRef = useRef(null);
+  const cardRefs = useRef([]);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      if (window.innerWidth >= 1024) {
-        services.forEach((_, index) => {
+      const cards = cardRefs.current;
+
+      cards.forEach((card, index) => {
+        // Pin logic: Pin every card except the last one
+        if (index < cards.length - 1) {
           ScrollTrigger.create({
-            trigger: menuRefs.current[index],
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => updateContent(index, true),
-            onEnterBack: () => updateContent(index, true),
+            trigger: card,
+            start: "top top",
+            endTrigger: cards[cards.length - 1],
+            end: "top top",
+            pin: true,
+            pinSpacing: false,
+            scrub: true,
           });
-        });
-      } else {
-        services.forEach((_, index) => {
+
+          // Rotate/Scale effect logic
           ScrollTrigger.create({
-            trigger: menuRefs.current[index],
-            start: "top 80%",
-            end: "bottom 20%",
-            onEnter: () => setActiveIndex(index),
-            onEnterBack: () => setActiveIndex(index),
+            trigger: cards[index + 1],
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              gsap.set(card, {
+                scale: 1 - progress * 0.1,
+                rotation: index % 2 === 0 ? progress * 4 : -progress * 4,
+                rotationX: index % 2 === 0 ? progress * 12 : -progress * 12,
+                transformOrigin: "center center",
+              });
+              
+              const overlay = card.querySelector('.card-overlay');
+              if (overlay) {
+                gsap.set(overlay, { opacity: progress * 0.5 });
+              }
+            }
           });
-        });
-      }
+        }
+      });
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const updateContent = (index, isDesktop = false) => {
-    setActiveIndex(index);
-
-    if (isDesktop) {
-      const target = menuRefs.current[index];
-      if (target && dotRef.current) {
-        const { offsetTop, offsetHeight } = target;
-        gsap.to(dotRef.current, {
-          y: offsetTop + offsetHeight / 2 - 6,
-          duration: 0.6,
-          ease: "power3.out"
-        });
-      }
-
-      gsap.fromTo(rightContentRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }
-      );
-
-      gsap.fromTo(".capability-item",
-        { opacity: 0, x: -10 },
-        { opacity: 1, x: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" }
-      );
-    }
-  };
-
-  const handleMobileClick = (index) => {
-    if (window.innerWidth < 1024) {
-      setActiveIndex(activeIndex === index ? -1 : index);
-    }
-  };
-
   return (
-    <section ref={containerRef} className="bg-[#fafafa] py-16 md:py-32 px-6 md:px-16 lg:px-24 font-sans selection:bg-black selection:text-white">
-      <div className="max-w-350 mx-auto">
-
-        {/* Header Section */}
-        <div className="flex flex-col mb-12 lg:mb-16">
-          <div className="flex justify-between items-end">
-            <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] text-gray-400 uppercase">Selected Capabilities</h2>
-            <span className="text-sm font-mono text-gray-400 font-bold hidden md:block">
-              [{activeIndex + 1} — {services.length}]
-            </span>
-          </div>
+    <div ref={containerRef} className="bg-[#fafafa] selection:bg-black selection:text-white">
+      {/* Header wrapper to keep it separate from the pinning cards */}
+      <div className="px-6 md:px-16 lg:px-24 pt-16 md:pt-32">
+        <div className="max-w-350 mx-auto flex flex-col mb-12">
+          <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] text-gray-400 uppercase">
+            Selected Capabilities
+          </h2>
           <div className="w-full -mt-2 md:-mt-4">
             <ElasticLine />
           </div>
         </div>
+      </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div className="lg:col-span-5 relative pb-[10vh] lg:pb-[40vh]">
-            <div
-              ref={dotRef}
-              className="absolute -left-10 w-3 h-3 bg-black rounded-full z-10 hidden lg:block"
-              style={{ pointerEvents: 'none' }}
-            />
+      {/* Pinning Cards Section */}
+      <div className="relative">
+        {services.map((service, index) => (
+          <section
+            key={service.id}
+            ref={(el) => (cardRefs.current[index] = el)}
+            className="w-full min-h-screen bg-[#fafafa] border-b border-gray-200 flex items-center justify-center p-6 md:p-16 lg:px-24 relative overflow-hidden"
+            style={{ perspective: '1200px' }}
+          >
+            {/* Darkening Overlay */}
+            <div className="card-overlay absolute inset-0 bg-black opacity-0 pointer-events-none z-10" />
 
-            <nav className="flex flex-col lg:border-r border-gray-300/90">
-              {services.map((service, index) => (
-                <div key={service.id} className="group border-b border-gray-100 lg:border-none">
-                  <div
-                    ref={el => menuRefs.current[index] = el}
-                    onClick={() => handleMobileClick(index)}
-                    className={`w-full text-left transition-all duration-500 py-6 lg:py-8 flex justify-between items-center lg:block cursor-pointer ${activeIndex === index ? 'opacity-100' : 'opacity-10 grayscale'
-                      }`}
-                  >
-                    <h3 className="text-4xl md:text-6xl lg:text-[7.5rem] font-black leading-[0.8] tracking-tighter uppercase transition-transform group-hover:translate-x-2">
-                      {service.title}
-                    </h3>
-                    <ChevronDown className={`lg:hidden transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`} />
-                  </div>
-
-                  {/* Mobile Content */}
-                  <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-250 opacity-100 pb-10' : 'max-h-0 opacity-0'}`}>
-                    <ul className="space-y-4 pt-4">
-                      {service.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-lg font-bold text-gray-700">
-                          <span className="text-xs font-mono text-orange-500">0{idx + 1}</span>
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
-                    <img src={service.image} className="mt-6 rounded-xl w-full aspect-video object-cover" alt="" />
-                  </div>
-                </div>
-              ))}
-            </nav>
-          </div>
-
-          {/* Desktop Right Content */}
-          <div className="hidden lg:block lg:col-span-7 sticky top-[20%] h-fit" ref={rightContentRef}>
-            <div className="grid grid-cols-12 gap-8 items-center">
-              <div className="col-span-5 py-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4 italic">/ Capabilities</p>
-                <h4 className="text-2xl font-black text-black leading-tight uppercase mb-8">
-                  {services[activeIndex >= 0 ? activeIndex : 0].fullName}
+            <div className="max-w-350 w-full grid lg:grid-cols-12 gap-8 items-center relative z-20">
+              {/* Left Side: Title & Number */}
+              <div className="lg:col-span-5">
+                <span className="text-4xl md:text-6xl font-mono text-gray-300 block mb-4">
+                  (0{index + 1})
+                </span>
+                <h3 className="text-5xl md:text-7xl lg:text-[8rem] font-black leading-[0.8] tracking-tighter uppercase text-black mb-8">
+                  {service.title}
+                </h3>
+                <h4 className="text-xl font-bold text-gray-500 uppercase tracking-widest mb-6">
+                  {service.fullName}
                 </h4>
+              </div>
 
-                <ul className="space-y-6">
-                  {services[activeIndex >= 0 ? activeIndex : 0].details.map((detail, idx) => (
-                    <li key={idx} className="capability-item flex items-start gap-4 text-lg font-bold text-gray-800 leading-snug">
-                      <span className="text-[11px] font-mono text-orange-500 pt-1 shrink-0">0{idx + 1}</span>
+              {/* Right Side: Details & Image */}
+              <div className="lg:col-span-7 grid md:grid-cols-2 gap-8 items-center">
+                <ul className="space-y-4">
+                  {service.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-lg font-bold text-gray-800 leading-tight">
+                      <span className="text-[11px] font-mono text-orange-500 pt-1">0{idx + 1}</span>
                       {detail}
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="col-span-7">
-                <div className="relative group overflow-hidden rounded-xl aspect-4/5 bg-gray-100 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] bg-gray-100">
                   <img
-                    key={services[activeIndex >= 0 ? activeIndex : 0].image}
-                    src={services[activeIndex >= 0 ? activeIndex : 0].image}
-                    alt={services[activeIndex >= 0 ? activeIndex : 0].title}
-                    className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/5 pointer-events-none" />
                 </div>
               </div>
             </div>
-          </div>
-
-        </div>
+          </section>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

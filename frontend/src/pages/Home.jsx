@@ -8,11 +8,13 @@ import SelectedCapabilities from '../components/SelectedCapabilities'
 import MindStoryHero from '../components/MindStoryHero'
 import StatsSection from '../components/StatsSection'
 import UserReviews from '../components/UserReviews'
+import ImageReveal from '../components/ImgReveal'
 
 const Home = () => {
   return (
     <>
       <MindStoryHero />
+      <ImageReveal/>
       <SelectedCapabilities />
       <StatsSection />
       <RecentWorks />

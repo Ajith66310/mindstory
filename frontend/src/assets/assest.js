@@ -17,6 +17,7 @@ import client3 from './client3.png'
 import client4 from './client4.png'
 import client5 from './client5.png'
 import client6 from './client6.png'
+import video1 from './video1.mp4'
 
 
 
@@ -26,6 +27,7 @@ const img = {
   company4,
   company5,
   brandlogo,
+  video1,
   company,
   brandlogowhite,
   tm1,
