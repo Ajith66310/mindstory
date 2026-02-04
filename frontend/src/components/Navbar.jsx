@@ -51,7 +51,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav ref={navbarRef} className="fixed top-0 left-0 right-0 z-110 w-full bg-[#fafafa]">
+      <nav ref={navbarRef} className="fixed top-0 left-0 right-0 z-110 w-full bg-transparent">
         <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
           <NavLink to="/" className="z-120 text-xl md:text-2xl font-black tracking-tighter text-black">
             MINDSTORY

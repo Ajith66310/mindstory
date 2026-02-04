@@ -5,23 +5,23 @@ import RecentWorks from '../components/RecentWorks'
 import OurTeam from '../components/OurTeam'
 import Marquee from '../components/Marquee'
 import SelectedCapabilities from '../components/SelectedCapabilities'
-import MindStoryHero from '../components/MindStoryHero'
 import StatsSection from '../components/StatsSection'
 import UserReviews from '../components/UserReviews'
 import ImageReveal from '../components/ImgReveal'
+import Hero from '../components/Hero'
 
 const Home = () => {
   return (
     <>
-      <MindStoryHero />
-      <ImageReveal/>
+      <Hero />
+      <ImageReveal />
       <SelectedCapabilities />
       <StatsSection />
       <RecentWorks />
       <Marquee />
       <LeadingBrands />
       <OurTeam />
-      <UserReviews/>
+      <UserReviews />
       <Faq />
     </>
   )

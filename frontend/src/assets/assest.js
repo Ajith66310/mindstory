@@ -28,7 +28,6 @@ const img = {
   company4,
   company5,
   brandlogo,
-  video1,
   company,
   brandlogowhite,
   tm1,
@@ -43,6 +42,10 @@ const img = {
   client5,
   client6,
 }
+const video = {
+video1,
+}
+
 
 const svg = {
   arrow,
@@ -210,4 +213,4 @@ const navItems = [
   ];
 
 
-export { img , faqs  , navItems , jobs , svg};
+export { img , faqs  , navItems , jobs , svg, video};
