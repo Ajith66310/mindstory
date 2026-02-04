@@ -70,11 +70,11 @@ const Hero = () => {
             creating
           </h1>
 
-          <h1 className="absolute right-[14%] top-[35%] text-orange-500 text-[12vw] font-bold tracking-tighter leading-none">
+          <h1 className="absolute right-[14%] top-[35%]  text-black text-[12vw] font-bold tracking-tighter leading-none">
             your
           </h1>
 
-          <h1 className="absolute bottom-[8%] left-1/2 -translate-x-1/2 text-black text-[15vw] font-serif leading-none">
+          <h1 className="absolute bottom-[8%] left-1/2 -translate-x-1/2 text-orange-500  text-[15vw] font-serif leading-none">
             story
           </h1>
 

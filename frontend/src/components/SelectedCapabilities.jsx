@@ -122,7 +122,7 @@ const SelectedCapabilities = () => {
                         alt="" 
                         className="w-full h-auto"
                         style={{ 
-                          filter: 'invert(82%) sepia(24%) saturate(1633%) hue-rotate(331deg) brightness(102%) contrast(101%)'
+                          filter:' invert(69%) sepia(83%) saturate(1653%) hue-rotate(2deg) brightness(167%) contrast(101%)'
                         }}
                       />
                     </div>

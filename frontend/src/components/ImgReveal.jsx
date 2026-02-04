@@ -49,16 +49,19 @@ const ImageReveal = () => {
     };
   }, []);
 
+  // Shared Tailwind classes for the text
+  const textClass = "text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase";
+
   return (
     <div className="bg-[#fafafa] text-[#1a1a1a] overflow-x-hidden selection:bg-black selection:text-white cursor-default">
       
-      {/* FLOATING IMAGE FOLLOWER - SIZE INCREASED HERE */}
+      {/* FLOATING IMAGE FOLLOWER */}
       <div 
         ref={mouseImgRef}
         className={`fixed top-0 left-0 
-          w-[300px] h-[200px]          /* Mobile size */
-          md:w-[550px] md:h-[350px]    /* Large size for Desktop */
-          pointer-events-none z-[999] overflow-hidden rounded-2xl 
+          w-75 h-50          
+          md:w-137.5 md:h-87.5    
+          pointer-events-none z-999 overflow-hidden rounded-2xl 
           transition-opacity duration-300 -translate-x-1/2 -translate-y-1/2 
           ${activeImage ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
       >
@@ -75,27 +78,26 @@ const ImageReveal = () => {
       >
         
         <div className="line flex justify-center items-center gap-2 md:gap-6">
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">We help</span>
+          <span className={textClass}>We craft</span>
           <span 
             onMouseEnter={() => setActiveImage(img.company)}
             onMouseLeave={() => setActiveImage(null)}
             className="img-span h-10 md:h-24 w-0 rounded-md md:rounded-xl overflow-hidden relative bg-gray-200 cursor-none"
           >
-            <img src={img.company} alt="strategy" className="h-full w-full object-cover opacity-30" />
+            <img src={img.company} alt="craft" className="h-full w-full object-cover opacity-30" />
           </span>
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">ambitious</span>
         </div>
 
         <div className="line flex justify-center items-center gap-2 md:gap-6">
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">brands</span>
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">unlock</span>
+          <span className={textClass}>Vivid</span>
           <span 
             onMouseEnter={() => setActiveImage(img.company2)}
             onMouseLeave={() => setActiveImage(null)}
             className="img-span h-10 md:h-24 w-0 rounded-md md:rounded-xl overflow-hidden relative bg-gray-200 cursor-none"
           >
-            <img src={img.company2} alt="digital" className="h-full w-full object-cover opacity-30" />
+            <img src={img.company2} alt="vivid" className="h-full w-full object-cover opacity-30" />
           </span>
+          <span className={textClass}>spectacles</span>
         </div>
 
         <div className="line flex justify-center items-center gap-2 md:gap-6">
@@ -104,26 +106,25 @@ const ImageReveal = () => {
             onMouseLeave={() => setActiveImage(null)}
             className="img-span h-10 md:h-24 w-0 rounded-md md:rounded-xl overflow-hidden relative bg-gray-200 cursor-none"
           >
-            <img src={img.company3} alt="performance" className="h-full w-full object-cover opacity-30" />
+            <img src={img.company3} alt="connect" className="h-full w-full object-cover opacity-30" />
           </span>
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">their</span>
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">full</span>
+          <span className={textClass}>to connect</span>
         </div>
 
         <div className="line flex justify-center items-center">
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">digital potential</span>
+          <span className={textClass}>human emotion</span>
         </div>
 
         <div className="line flex justify-center items-center gap-2 md:gap-6">
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">through</span>
+          <span className={textClass}>beyond</span>
           <span 
             onMouseEnter={() => setActiveImage(img.company4)}
             onMouseLeave={() => setActiveImage(null)}
             className="img-span h-10 md:h-24 w-0 rounded-md md:rounded-xl overflow-hidden relative bg-gray-200 cursor-none"
           >
-            <img src={img.company4} alt="velocity" className="h-full w-full object-cover opacity-30" />
+            <img src={img.company4} alt="pixels" className="h-full w-full object-cover opacity-30" />
           </span>
-          <span className="text-[clamp(2rem,8vw,7.5rem)] font-bold tracking-tighter leading-none whitespace-nowrap uppercase">velocity.</span>
+          <span className={textClass}>pixels.</span>
         </div>
 
       </div>
