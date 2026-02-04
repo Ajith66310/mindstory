@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { img } from "../assets/assest";
+import { svg } from "../assets/assest";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,7 +73,7 @@ const Marquee = () => {
                 <h2 className="text-[12vw] font-black uppercase tracking-tighter text-black flex items-center gap-10">
                   Mindstory
                   <img
-                    src={img.arrow}
+                    src={svg.arrow}
                     alt="arrow"
                     className="w-[8vw] h-[8vw]"
                     style={{ filter: 'brightness(0)' }}
@@ -89,7 +89,7 @@ const Marquee = () => {
                 >
                   Digital Agency
                   <img
-                    src={img.arrow}
+                    src={svg.arrow}
                     alt="arrow"
                     className="w-[8vw] h-[8vw] rotate-45"
                     style={{ filter: 'invert(48%) sepia(80%) saturate(2476%) hue-rotate(3deg) brightness(101%) contrast(106%)' }}

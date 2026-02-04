@@ -11,6 +11,7 @@ import tm2 from './tm2.png'
 import tm3 from './tm3.png'
 import tm4 from './tm4.png'
 import arrow from './arrow.svg'
+import curvedunderline from './curvedunderline.svg'
 import client1 from './client1.png'
 import client2 from './client2.png'
 import client3 from './client3.png'
@@ -34,7 +35,6 @@ const img = {
   tm2,
   tm3,
   tm4,
-  arrow,
   black,
   client1,
   client2,
@@ -42,6 +42,11 @@ const img = {
   client4,
   client5,
   client6,
+}
+
+const svg = {
+  arrow,
+  curvedunderline
 }
 
   const faqs = [
@@ -205,4 +210,4 @@ const navItems = [
   ];
 
 
-export { img , faqs  , navItems , jobs};
+export { img , faqs  , navItems , jobs , svg};
