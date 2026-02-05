@@ -1,68 +1,64 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ElasticLine from './ElasticLine';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MindstoryHubLight = () => {
   const containerRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const services = [
     {
       id: "01",
-      title: "Search Engine Optimization",
-      description: "Dominating Google rankings through data-driven technical SEO and strategic content placement.",
+      title: "RANKING YOUR SITE #1 ON GOOGLE",
+      description: "Master the strategies to dominate Google rankings with our specialized SEO techniques. We dive deep into search algorithms to elevate your site's visibility, driving organic traffic and leading your business to digital prominence.",
       tag: "Growth"
     },
     {
       id: "02",
-      title: "Art & Illustration",
-      description: "Bespoke visual storytelling that creates an emotional connection between your brand and audience.",
+      title: "BRAND ENHANCEMENT WITH ART & ILLUSTRATION",
+      description: "Elevate your brand's appeal through our captivating art and illustration. Our creative flair ensures your brand makes an unforgettable impact, distinguishing itself in the competitive landscape.",
       tag: "Creative"
     },
     {
       id: "03",
-      title: "Social Media Strategy",
-      description: "Building digital communities and enhancing brand voice across all major social platforms.",
+      title: "SOCIAL MEDIA BRAND BOOST",
+      description: "Boost your brand's social media presence with our targeted strategies. We enhance engagement, increase visibility, and strengthen community ties, ensuring your brand's voice resonates across platforms.",
       tag: "Engagement"
     },
     {
       id: "04",
-      title: "Digital Advertising",
-      description: "High-ROI campaigns utilizing advanced targeting and continuous performance optimization.",
+      title: "DIGITAL AD STRATEGY FOR IMPACT",
+      description: "Maximize your digital ad impact with our expert strategies. Our data-driven approach optimizes ad placements, ensuring your message reaches and engages your target audience effectively.",
       tag: "Performance"
     },
     {
       id: "05",
-      title: "Custom Web Design",
-      description: "High-performance websites that balance sophisticated aesthetics with seamless user experience.",
+      title: "CUSTOM WEB DESIGN THAT STANDS OUT",
+      description: "Craft a unique online identity with our custom web design. Our blend of creativity and functionality ensures your website captivates visitors and communicates your brand's essence clearly.",
       tag: "Infrastructure"
     },
     {
       id: "06",
-      title: "Email Marketing",
-      description: "Personalized communication strategies designed to nurture leads and drive retention.",
+      title: "DRIVING ENGAGEMENT WITH EMAIL CAMPAIGNS",
+      description: "Elevate audience engagement with dynamic email campaigns. Our combination of compelling visuals and strategic messaging fosters meaningful interactions, keeping your audience connected and engaged with your brand.",
       tag: "Retention"
     }
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero Title Reveal (Masked effect)
-      gsap.from('.reveal-text', {
-        y: 120,
-        ease: "power4.out",
-        duration: 1.5,
-        stagger: 0.1,
-      });
-
-      // Simple fade for description
-      gsap.from('.hero-sub', {
-        opacity: 0,
-        y: 20,
-        delay: 0.8,
-        duration: 1,
-        ease: "power3.out"
+      // Color transition for description like in SelectedCapabilities
+      gsap.to(descriptionRef.current, {
+        color: "#ff6900",
+        scrollTrigger: {
+          trigger: descriptionRef.current,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: true,
+        }
       });
 
       // Service items reveal
@@ -80,87 +76,66 @@ const MindstoryHubLight = () => {
         });
       });
 
-      // Line animations
-      gsap.from('.divider-line', {
-        scrollTrigger: {
-          trigger: '.divider-line',
-          start: "top 90%",
-        },
-        scaleX: 0,
-        transformOrigin: "left",
-        duration: 1.5,
-        ease: "expo.out"
-      });
-
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-white text-slate-900 selection:bg-slate-900 selection:text-white">
+    <div ref={containerRef} className="min-h-screen bg-[#fafafa] text-slate-900 selection:bg-slate-900 selection:text-white">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=General+Sans:wght@400;500;600;700&display=swap');
         
-        body {
-          font-family: 'Inter', sans-serif;
-          -webkit-font-smoothing: antialiased;
+        .font-heading {
+          font-family: 'Space Grotesk', sans-serif;
         }
-
-        .serif {
-          font-family: 'Playfair Display', serif;
-        }
-
-        .title-mask {
-          overflow: hidden;
-          display: block;
+        .font-body {
+          font-family: 'General Sans', sans-serif;
         }
       `}</style>
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-20 px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="title-mask">
-            <h1 className="reveal-text text-[12vw] md:text-[8vw] font-bold leading-[0.9] tracking-tighter">
-              DIGITAL <span className="serif italic font-normal">Excellence</span>
-            </h1>
-          </div>
-          <div className="title-mask">
-            <h1 className="reveal-text text-[12vw] md:text-[8vw] font-bold leading-[0.9] tracking-tighter">
-              BEYOND LIMITS.
-            </h1>
-          </div>
+      {/* Simplified Header Section */}
+      <section className="px-6 md:px-16 lg:px-24 pt-16 md:pt-32 pb-20">
+        <div className="max-w-7xl mx-auto flex flex-col">
+          {/* Main Small Heading */}
+          <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] uppercase font-body mb-4">
+            Our Expertise in Digital Marketing
+          </h2>
 
-          <div className="hero-sub mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
-            <p className="text-xl md:text-2xl text-slate-500 max-w-xl leading-relaxed">
-              Mindstory is a premium creative agency based in Thrissur, Kerala. 
-              We blend technical precision with artistic intuition to elevate 
-              modern brands into industry leaders.
-            </p>
+          {/* Color-changing Sub Heading */}
+          <p 
+            ref={descriptionRef} 
+            className="text-gray-400 text-xl md:text-2xl font-medium transition-colors duration-300 font-body max-w-4xl leading-relaxed"
+          >
+            Mindstory, the best digital marketing agency in Thrissur, Kerala is your go-to hub for all things digital. From SEO to custom website design, we offer a comprehensive suite of services to elevate your brand and drive business growth.
+          </p>
+
+          <div className="w-full -mt-2 md:-mt-4">
+            <ElasticLine />
           </div>
         </div>
       </section>
 
-      <div className="divider-line h-px bg-slate-100 w-full mb-32" />
-
       {/* Services Grid */}
       <section className="px-8 pb-40">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-slate-400 mb-16 block">Core Expertise</h2>
+          <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] uppercase font-body text-slate-400 mb-16 block">
+            Core Expertise
+          </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
             {services.map((service) => (
               <div key={service.id} className="service-item border-t border-slate-100 pt-8 group">
                 <div className="flex justify-between items-start mb-6">
-                    <span className="text-xs font-mono text-slate-400">{service.id}</span>
-                    <span className="text-[10px] uppercase tracking-widest border border-slate-200 px-2 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
+                    <span className="text-xs font-mono text-orange-400">{service.id}</span>
+                    <span className="text-[10px] uppercase tracking-widest border border-slate-200 px-2 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 font-body">
                         {service.tag}
                     </span>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 tracking-tight group-hover:translate-x-2 transition-transform duration-500">
+                <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:translate-x-2 transition-transform duration-500 font-heading">
                     {service.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-slate-500 leading-relaxed font-body">
                   {service.description}
                 </p>
               </div>
@@ -168,8 +143,6 @@ const MindstoryHubLight = () => {
           </div>
         </div>
       </section>
-
-    
     </div>
   );
 };

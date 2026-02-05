@@ -23,6 +23,7 @@ import video1 from './video1.mp4'
 import seo from './seo.png'
 import smm from './smm.png'
 import ads from './ads.jpg'
+import roboinsofa from './roboinsofa.webp'
 import brandingdesign from './branding-design.jpg'
 
 
@@ -50,6 +51,7 @@ const img = {
   client4,
   client5,
   client6,
+  roboinsofa
 }
 const video = {
 video1,

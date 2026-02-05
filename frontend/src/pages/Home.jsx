@@ -10,17 +10,19 @@ import UserReviews from '../components/UserReviews'
 import Hero from '../components/Hero'
 import ProcessAnimation from '../components/TextAnimation'
 import MindstoryHub from '../components/MindStoryHub'
+import WhyChooseUs from '../components/WhychooseUs'
 
 const Home = () => {
   return (
     <>
-    <MindstoryHub/>
       <Hero />
-      <ProcessAnimation/>
+      <ProcessAnimation />
       <SelectedCapabilities />
-      <StatsSection />
+      <WhyChooseUs />
       <RecentWorks />
+      <MindstoryHub />
       <Marquee />
+      <StatsSection />
       <LeadingBrands />
       <OurTeam />
       <UserReviews />
