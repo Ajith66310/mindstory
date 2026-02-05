@@ -50,7 +50,6 @@ const MindstoryHubLight = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Color transition for description like in SelectedCapabilities
       gsap.to(descriptionRef.current, {
         color: "#ff6900",
         scrollTrigger: {
@@ -61,7 +60,6 @@ const MindstoryHubLight = () => {
         }
       });
 
-      // Service items reveal
       gsap.utils.toArray('.service-item').forEach((item) => {
         gsap.from(item, {
           scrollTrigger: {
@@ -94,15 +92,12 @@ const MindstoryHubLight = () => {
         }
       `}</style>
 
-      {/* Simplified Header Section */}
       <section className="px-6 md:px-16 lg:px-24 pt-16 md:pt-32 pb-20">
         <div className="max-w-7xl mx-auto flex flex-col">
-          {/* Main Small Heading */}
           <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] uppercase font-body mb-4">
             Our Expertise in Digital Marketing
           </h2>
 
-          {/* Color-changing Sub Heading */}
           <p 
             ref={descriptionRef} 
             className="text-gray-400 text-xl md:text-2xl font-medium transition-colors duration-300 font-body max-w-4xl leading-relaxed"
@@ -116,13 +111,8 @@ const MindstoryHubLight = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="px-8 pb-40">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] uppercase font-body text-slate-400 mb-16 block">
-            Core Expertise
-          </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
             {services.map((service) => (
               <div key={service.id} className="service-item border-t border-slate-100 pt-8 group">

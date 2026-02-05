@@ -19,13 +19,13 @@ const Home = () => {
       <ProcessAnimation />
       <SelectedCapabilities />
       <WhyChooseUs />
-      <RecentWorks />
-      <MindstoryHub />
       <Marquee />
+      <RecentWorks />
+      <UserReviews />
       <StatsSection />
+      <MindstoryHub />
       <LeadingBrands />
       <OurTeam />
-      <UserReviews />
       <Faq />
     </>
   )
