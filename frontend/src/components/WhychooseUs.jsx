@@ -77,7 +77,7 @@ const WhyChooseUs = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative bg-[#fafafa] px-6 md:px-16 lg:px-24 overflow-hidden"
+      className="relative bg-[#fafafa] px-6 md:px-16 lg:px-24 overflow-hidden pb-0"
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
@@ -93,9 +93,8 @@ const WhyChooseUs = () => {
         .text-clamp.expanded { -webkit-line-clamp: unset; }
       `}</style>
 
-      <div ref={containerRef} className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start py-12 md:py-20">
+      <div ref={containerRef} className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start pt-12 md:pt-20 pb-0">
         
-        {/* Left Side: Sticky Lottie */}
         <div className="lg:sticky lg:top-24 lg:h-112.5 flex justify-center items-center order-2 lg:order-1">
           <div className="relative w-full flex justify-center items-center">
             <div className="absolute w-[80%] h-[80%] bg-orange-50 rounded-full blur-[100px] opacity-20" />
@@ -112,7 +111,6 @@ const WhyChooseUs = () => {
           </div>
         </div>
 
-        {/* Right Side: Content */}
         <div className="flex flex-col order-1 lg:order-2 py-8">
           <span ref={tagRef} className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase mb-3 font-body block">
             Partner with Our Agency
