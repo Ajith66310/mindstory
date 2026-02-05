@@ -79,15 +79,15 @@ const FeaturedBlogs = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-24">
         
-        <div className="mb-32 relative">
-          <p className="text-[#ff6b00] font-mono font-bold tracking-[0.3em] mb-4 text-xs uppercase">
+        <div className="mb-30 relative">
+          <p className="text-[#ff6b00] font-mono font-bold tracking-[0.3em]  text-xs uppercase">
             // Knowledge Hub
           </p>
           <h2 
             ref={headingRef}
             className="text-7xl md:text-[10vw] font-black text-black tracking-tighter uppercase leading-[0.8] mix-blend-difference"
           >
-            Featured <br /> <span className="text-gray-200">Insights.</span>
+        <span className="text-gray-200">Featured Insights.</span>
           </h2>
         </div>
 
