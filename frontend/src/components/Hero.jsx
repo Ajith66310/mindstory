@@ -81,7 +81,7 @@ const Hero = () => {
             </div>
             <div className="flex justify-between items-center gap-4">
                <span>{formatTime('America/New_York')}</span>
-               <span className="text-black">NEYWORK</span>
+               <span className="text-black">NEWYORK</span>
             </div>
             <div className="flex justify-between items-center gap-4">
                <span>{formatTime('Asia/Dubai')}</span>

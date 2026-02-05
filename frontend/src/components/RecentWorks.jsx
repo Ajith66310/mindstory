@@ -13,12 +13,12 @@ const RecentWorks = () => {
   const textRecentRef = useRef(null);
 
   const works = [
-    { id: 1, company: 'TechCorp', title: 'Brand Transformation', category: 'Branding & Strategy', image: img.company2 },
-    { id: 2, company: 'FinanceHub', title: 'Digital Marketing', category: 'Marketing & Growth', image: img.company },
+    { id: 1, company: 'TechCorp', title: 'Brand Transformation', category: 'Branding & Strategy', image: img.company4 },
+    { id: 2, company: 'FinanceHub', title: 'Digital Marketing', category: 'Marketing & Growth', image: img.company2 },
     { id: 3, company: 'EcoLife', title: 'E-commerce Platform', category: 'Web Development', image: img.company3 },
     { id: 4, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company4 },
-    { id: 5, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company2 },
-    { id: 6, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company3 },
+    { id: 5, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company5 },
+    { id: 6, company: 'MediaFlow', title: 'Social Media Strategy', category: 'Social Media', image: img.company2 },
   ];
 
   useLayoutEffect(() => {
@@ -98,8 +98,6 @@ const RecentWorks = () => {
 
   return (
     <div ref={page1Ref} className="relative w-full lg:h-screen bg-[#fafafa] overflow-x-hidden lg:overflow-hidden">
-
-      {/* HEADING */}
       <div className="relative lg:absolute pt-24 lg:pt-0 lg:top-24 left-8 md:left-16 lg:left-24 z-5 select-none pointer-events-none leading-[0.8]">
         <div className="overflow-hidden">
           <div ref={headingLine1} style={{ willChange: 'transform' }}>
@@ -117,7 +115,6 @@ const RecentWorks = () => {
         </div>
       </div>
 
-      {/* Cards Container */}
       <div
         ref={cardsContainerRef}
         className="relative lg:absolute top-0 lg:-left-20 w-full lg:w-auto h-auto lg:h-full flex flex-col lg:flex-row items-center lg:gap-12 px-6 lg:px-5 pb-20 lg:pb-0 mt-12 lg:mt-0 z-10 will-change-transform"

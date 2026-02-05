@@ -1,6 +1,5 @@
 import brandlogo from './brand-logo-img.avif'
 import brandlogowhite from './brand-logo-img-white.avif'
-import company from './company.jpg'
 import black from './black.jpg'
 import company2 from './company2.avif'
 import company3 from './company3.avif'
@@ -19,13 +18,25 @@ import client3 from './client3.png'
 import client4 from './client4.png'
 import client5 from './client5.png'
 import client6 from './client6.png'
+import client7 from './client7.webp'
+import client8 from './client8.webp'
+import client9 from './client9.webp'
+import client10 from './client10.avif'
+import client11 from './client11.webp'
+import client12 from './client12.webp'
+import client13 from './client13.webp'
 import video1 from './video1.mp4'
 import seo from './seo.png'
 import smm from './smm.png'
 import ads from './ads.jpg'
 import roboinsofa from './roboinsofa.webp'
 import brandingdesign from './branding-design.jpg'
-
+import ourproject1 from './ourproject1.webp'
+import ourproject2 from './ourproject2.webp'
+import ourproject3 from './ourproject3.webp'
+import ourproject4 from './ourproject4.webp'
+import ourproject5 from './ourproject5.webp'
+import ourproject6 from './ourproject6.webp'
 
 
 const img = {
@@ -37,7 +48,6 @@ const img = {
   brandlogo,
   brandingdesign,
   smm,
-  company,
   brandlogowhite,
   tm1,
   tm2,
@@ -51,7 +61,20 @@ const img = {
   client4,
   client5,
   client6,
-  roboinsofa
+  client7,
+  client8,
+  client9,
+  client10,
+  client11,
+  client12,
+  client13,
+  roboinsofa,
+  ourproject1,
+  ourproject2,
+  ourproject3,
+  ourproject4,
+  ourproject5,
+  ourproject6,
 }
 const video = {
 video1,

@@ -5,7 +5,7 @@ import ElasticLine from './ElasticLine';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MindstoryHubLight = () => {
+const MindstoryHub = () => {
   const containerRef = useRef(null);
   const descriptionRef = useRef(null);
 
@@ -80,7 +80,7 @@ const MindstoryHubLight = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#fafafa] text-slate-900 selection:bg-slate-900 selection:text-white">
+    <div ref={containerRef} className="min-h-fit bg-[#fafafa] text-slate-900 selection:bg-slate-900 selection:text-white">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=General+Sans:wght@400;500;600;700&display=swap');
         
@@ -111,7 +111,7 @@ const MindstoryHubLight = () => {
         </div>
       </section>
 
-      <section className="px-8 pb-40">
+      <section className="px-8 pb-0">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
             {services.map((service) => (
@@ -137,4 +137,4 @@ const MindstoryHubLight = () => {
   );
 };
 
-export default MindstoryHubLight;
+export default MindstoryHub;

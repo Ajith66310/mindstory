@@ -55,7 +55,7 @@ export default function OurTeam() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: `+=${totalScroll * 2}`,
+          end: `+=${totalScroll}`, 
           pin: true,
           pinSpacing: true,
           scrub: 0.8,
@@ -95,35 +95,30 @@ export default function OurTeam() {
        @media (max-width: 640px) {
           .team-image-container {
             top: 60% !important;
-            bottom: 2rem !important; 
-            bottom: 2rem !important;
             right: -10px !important;
             transform: none !important;
             width: 250px !important; 
-            width: 250px !important;
             height: 250px !important;
           }
 
           .team-image-container img {
             width: 100% !important;
             height: 100% !important;
+          }
         }
-
       `}</style>
 
-      {/*  IMAGE CONTAINER  */}
       <div ref={imageRef} className="team-image-container block">
         <img
           src={characters[activeIndex >= 0 ? activeIndex : 0]?.img}
           alt="Team member"
-          className="w-105 h-140 object-cover object-top  rounded "
+          className="w-105 h-140 object-cover object-top rounded"
           style={{ filter: 'grayscale(20%)' }}
         />
       </div>
 
-      <div ref={containerRef} className="min-h-70 px-6 md:px-16 lg:px-24 py-24">
+      <div ref={containerRef} className="min-h-70 px-6 md:px-16 lg:px-24 pt-24 pb-0">
 
-        {/*   HEADING */}
         <div className="mb-24 leading-[0.8] select-none pointer-events-none">
           <div className="overflow-hidden">
             <div ref={headingLine1} style={{ willChange: 'transform' }}>
@@ -141,8 +136,7 @@ export default function OurTeam() {
           </div>
         </div>
 
-        {/* SCROLLING LIST */}
-        <div className="relative h-100 overflow-hidden mt-20">
+        <div className="relative h-100 overflow-hidden mt-10">
           <div ref={listWrapperRef} className="will-change-transform">
             <div className="flex flex-col gap-4 w-full">
               {characters.map((character, index) => (
@@ -152,8 +146,7 @@ export default function OurTeam() {
                   className="flex items-center py-6"
                 >
                   <span
-                    className={`list-item-index text-sm font-mono font-bold ${index === activeIndex ? 'text-orange-600' : 'text-black/20'
-                      }`}
+                    className={`list-item-index text-sm font-mono font-bold ${index === activeIndex ? 'text-orange-600' : 'text-black/20'}`}
                   >
                     {String(character.id).padStart(2, '0')}
                   </span>
@@ -161,8 +154,7 @@ export default function OurTeam() {
                   <div
                     className={`list-item-heading text-[clamp(28px,6vw,80px)] font-black tracking-tighter uppercase leading-none transition-all duration-500 ${index === activeIndex
                       ? 'opacity-100 translate-x-8 italic'
-                      : 'opacity-10'
-                      }`}
+                      : 'opacity-10'}`}
                   >
                     {character.name.split(' - ')[0]}
                     <span className="block text-sm font-bold tracking-widest mt-2 not-italic text-gray-400">
@@ -174,9 +166,10 @@ export default function OurTeam() {
             </div>
           </div>
         </div>
-            <div className="w-full -mt-4">
-        <ElastiicLine/>
-          </div>
+
+        <div className="w-full">
+          <ElastiicLine />
+        </div>
       </div>
 
       <style jsx>{`

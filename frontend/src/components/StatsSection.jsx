@@ -90,7 +90,7 @@ const AnimatedStats = ({ className = "" }) => {
       onUpdate: () => {
         setCounters(prev => {
           const newCounters = [...prev];
-          newCounters[index] = { current: `+${Math.floor(obj.val)}` };
+          newCounters[index] = { current: `${Math.floor(obj.val)}+` };
           return newCounters;
         });
       },

@@ -77,7 +77,7 @@ const ProcessAnimation = () => {
       height: '1.5em', 
       overflow: 'hidden',
       position: 'relative',
-      margin: '0 2px',
+      margin: '0 8px', 
     },
     highlight: {
       gridArea: '1 / 1 / 2 / 2',
@@ -91,10 +91,12 @@ const ProcessAnimation = () => {
     quote: {
       fontFamily: '"Canela", "Freight Display", Georgia, serif',
       fontWeight: '300',
-      fontSize: '1.6em',
+      fontSize: '1.4em', 
       color: '#1a1a1a',
       lineHeight: '1',
       fontStyle: 'normal',
+      position: 'relative',
+      top: '-0.1em' 
     }
   };
 
@@ -120,13 +122,13 @@ const ProcessAnimation = () => {
             In a digital-first world, your brand deserves more than just a presence. 
             We partner with visionary companies to 
             <span style={styles.accentWrapper}>
-              <span style={styles.quote}>"</span>
+              <span style={styles.quote}>“</span>
               <span style={styles.wordStack}>
                 <span ref={el => wordsRef.current[0] = el} style={styles.highlight}>Design</span>
                 <span ref={el => wordsRef.current[1] = el} style={styles.highlight}>Develop</span>
                 <span ref={el => wordsRef.current[2] = el} style={styles.highlight}>Deploy</span>
               </span>
-              <span style={styles.quote}>"</span>
+              <span style={styles.quote}>”</span>
             </span>
             high-impact strategies that drive measurable growth.
           </p>

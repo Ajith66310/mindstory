@@ -11,6 +11,7 @@ import Hero from '../components/Hero'
 import ProcessAnimation from '../components/TextAnimation'
 import MindstoryHub from '../components/MindStoryHub'
 import WhyChooseUs from '../components/WhychooseUs'
+import FeaturedBlogs from '../components/FeaturedBlogs'
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <MindstoryHub />
       <LeadingBrands />
       <OurTeam />
+      <FeaturedBlogs />
       <Faq />
     </>
   )
