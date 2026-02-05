@@ -11,16 +11,13 @@ const Hero = () => {
   const videoWrapperRef = useRef(null);
   const textGroupRef = useRef(null);
   
-  // State to hold the current time
   const [time, setTime] = useState(new Date());
 
-  // Update time every second
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // Helper function to format time based on timezone
   const formatTime = (timeZone) => {
     return new Intl.DateTimeFormat('en-GB', {
       hour: '2-digit',
@@ -39,7 +36,6 @@ const Hero = () => {
         end: "+=150%", 
         scrub: true,
         pin: true,
-        anticipatePin: 1,
       },
     });
 

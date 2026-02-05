@@ -11,6 +11,7 @@ import tm2 from './tm2.png'
 import tm3 from './tm3.png'
 import tm4 from './tm4.png'
 import arrow from './arrow.svg'
+import roundsvg from './roundsvg.svg'
 import curvedunderline from './curvedunderline.svg'
 import client1 from './client1.png'
 import client2 from './client2.png'
@@ -19,21 +20,29 @@ import client4 from './client4.png'
 import client5 from './client5.png'
 import client6 from './client6.png'
 import video1 from './video1.mp4'
+import seo from './seo.png'
+import smm from './smm.png'
+import ads from './ads.jpg'
+import brandingdesign from './branding-design.jpg'
 
 
 
 const img = {
   company2,
   company3,
+  ads,
   company4,
   company5,
   brandlogo,
+  brandingdesign,
+  smm,
   company,
   brandlogowhite,
   tm1,
   tm2,
   tm3,
   tm4,
+  seo,
   black,
   client1,
   client2,
@@ -49,6 +58,7 @@ video1,
 
 const svg = {
   arrow,
+  roundsvg,
   curvedunderline
 }
 

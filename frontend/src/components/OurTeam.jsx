@@ -101,7 +101,7 @@ export default function OurTeam() {
             transform: none !important;
             width: 250px !important; 
             width: 250px !important;
-            height: 300px !important;
+            height: 250px !important;
           }
 
           .team-image-container img {
@@ -123,7 +123,7 @@ export default function OurTeam() {
 
       <div ref={containerRef} className="min-h-70 px-6 md:px-16 lg:px-24 py-24">
 
-        {/*  MASSIVE HEADING */}
+        {/*   HEADING */}
         <div className="mb-24 leading-[0.8] select-none pointer-events-none">
           <div className="overflow-hidden">
             <div ref={headingLine1} style={{ willChange: 'transform' }}>

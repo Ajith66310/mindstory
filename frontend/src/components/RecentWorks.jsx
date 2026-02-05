@@ -50,11 +50,9 @@ const RecentWorks = () => {
         }
       });
 
-      // 1. Initial State: White to Black + Text to White
       tl.to(page, { backgroundColor: "#000000", duration: 1, ease: "none" }, 0)
         .to(textRecentRef.current, { color: "#ffffff", duration: 1, ease: "none" }, 0);
 
-      // Heading Entrance
       tl.fromTo(headingLine1.current,
         { clipPath: 'inset(100% 0% 0% 0%)', y: 120 },
         { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1, ease },
@@ -75,15 +73,12 @@ const RecentWorks = () => {
           ease: "power2.inOut"
         }, "startScrolling");
 
-        // 2. Horizontal Scroll
         tl.to(cards, {
           x: -scrollDistance,
           ease: "none",
           duration: 3
         }, "startScrolling");
 
-        // 3. Middle/End: Transition back to #fafafa
-        // We trigger this shortly after the horizontal scroll starts
         tl.to(page, { 
           backgroundColor: "#fafafa", 
           duration: 1.5, 

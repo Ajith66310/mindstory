@@ -42,7 +42,7 @@ const Footer = () => {
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden hidden sm:block">
 
         <h2
-          className=" absolute bottom-[-5%] left-[30%] text-[20vw] font-black leading-none tracking-tighter opacity-15"
+          className=" absolute bottom-[-5%] left-[27%] text-[20vw] font-black leading-none tracking-tighter opacity-15"
           style={{ color: '#f5a300', textTransform: 'uppercase' }}
         >
           MIND

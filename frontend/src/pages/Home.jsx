@@ -7,14 +7,16 @@ import Marquee from '../components/Marquee'
 import SelectedCapabilities from '../components/SelectedCapabilities'
 import StatsSection from '../components/StatsSection'
 import UserReviews from '../components/UserReviews'
-import ImageReveal from '../components/ImgReveal'
 import Hero from '../components/Hero'
+import ProcessAnimation from '../components/TextAnimation'
+import MindstoryHub from '../components/MindStoryHub'
 
 const Home = () => {
   return (
     <>
+    <MindstoryHub/>
       <Hero />
-      <ImageReveal />
+      <ProcessAnimation/>
       <SelectedCapabilities />
       <StatsSection />
       <RecentWorks />
