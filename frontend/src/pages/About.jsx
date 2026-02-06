@@ -3,12 +3,14 @@ import Timeline from '../components/Milestone'
 import StatsSection from '../components/StatsSection'
 import WhoWeAre from '../components/WhoWeAre'
 import AboutPageBanner from '../components/AboutPageBanner'
+import StatsGrid from '../components/StatsGrid'
 const About = () => {
   return (
     <>
-    <AboutPageBanner/>
-      <WhoWeAre/>
+      <AboutPageBanner />
+      <WhoWeAre />
       <StatsSection />
+      <StatsGrid/>
       <Timeline />
     </>
   )

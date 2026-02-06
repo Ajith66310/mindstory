@@ -85,7 +85,7 @@ const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <NavLink to="/contact" className="hidden lg:flex items-center justify-center bg-[#ec9a03] text-black h-12 w-36 rounded-full font-black text-[10px] tracking-widest uppercase active:scale-95 transition-transform">
-              Let's Talk <ArrowUpRight size={18} className="ml-1" />
+              Let's Talk 
             </NavLink>
 
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2 z-120 text-black bg-black/5 rounded-full">
