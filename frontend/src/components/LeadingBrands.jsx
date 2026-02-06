@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { img, svg } from '../assets/assest.js'; 
+import { img, svg } from '../assets/assest.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,19 +14,19 @@ const LeadingBrands = () => {
   const marqueeRef = useRef(null);
 
   const brands = [
-    {  img: img.client1 },
-    {  img: img.client2 },
-    {  img: img.client3 },
-    {  img: img.client4 },
-    {  img: img.client5 },
-    {  img: img.client6 },
-    {  img: img.client7 },
-    {  img: img.client8 },
-    {  img: img.client9 },
-    {  img: img.client10 },
-    {  img: img.client11 },
-    {  img: img.client12 },
-    {  img: img.client13 },
+    { img: img.client1 },
+    { img: img.client2 },
+    { img: img.client3 },
+    { img: img.client4 },
+    { img: img.client5 },
+    { img: img.client6 },
+    { img: img.client7 },
+    { img: img.client8 },
+    { img: img.client9 },
+    { img: img.client10 },
+    { img: img.client11 },
+    { img: img.client12 },
+    { img: img.client13 },
   ];
 
   useEffect(() => {
@@ -45,29 +45,29 @@ const LeadingBrands = () => {
         { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.2, ease },
         0.1
       )
-      .fromTo(
-        headingLine2.current,
-        { clipPath: 'inset(100% 0% 0% 0%)', y: 120 },
-        { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.2, ease },
-        0.3
-      )
-      .fromTo(
-        brandHighlightRef.current,
-        { scale: 0.5, opacity: 0, rotate: -3 },
-        { 
-          scale: 1, 
-          opacity: 1, 
-          rotate: 0, 
-          duration: 1.2, 
-          ease: "elastic.out(1, 0.8)" 
-        },
-        "-=0.5"
-      );
+        .fromTo(
+          headingLine2.current,
+          { clipPath: 'inset(100% 0% 0% 0%)', y: 120 },
+          { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.2, ease },
+          0.3
+        )
+        .fromTo(
+          brandHighlightRef.current,
+          { scale: 0.5, opacity: 0, rotate: -3 },
+          {
+            scale: 1,
+            opacity: 1,
+            rotate: 0,
+            duration: 1.2,
+            ease: "elastic.out(1, 0.8)"
+          },
+          "-=0.5"
+        );
 
       brandItemsRef.current.forEach((item, i) => {
         if (item) {
           gsap.fromTo(item,
-            { 
+            {
               opacity: 0,
               y: 40,
               scale: 0.9
@@ -78,8 +78,8 @@ const LeadingBrands = () => {
               scale: 1,
               duration: 0.8,
               ease: "power3.out",
-              scrollTrigger: { 
-                trigger: marqueeRef.current, 
+              scrollTrigger: {
+                trigger: marqueeRef.current,
                 start: 'top 80%',
               },
               delay: i * 0.05
@@ -89,7 +89,7 @@ const LeadingBrands = () => {
       });
 
       const totalWidth = brandItemsRef.current[0]?.offsetWidth * brands.length;
-      
+
       gsap.to(brandItemsRef.current, {
         x: -totalWidth,
         duration: 40,
@@ -108,7 +108,7 @@ const LeadingBrands = () => {
   return (
     <section ref={sectionRef} className="relative w-full pt-24 md:pt-40 pb-0 bg-[#fafafa] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-16 lg:px-5 mb-32 select-none">
-        
+
         <div className="overflow-hidden mb-2 ">
           <div ref={headingLine1}>
             <span className="block text-6xl md:text-7xl lg:text-7xl font-black tracking-tighter text-black uppercase">
@@ -122,18 +122,18 @@ const LeadingBrands = () => {
             <span className="text-6xl md:text-7xl lg:text-7xl font-black tracking-tighter text-[#ff6b00] uppercase italic">
               Leading
             </span>
-            
+
             <span className="relative h-20 inline-block text-6xl md:text-7xl lg:text-7xl font-black tracking-tighter text-[#ff6b00] uppercase italic px-4 md:px-8">
               Brands.
-              
-              <div 
+
+              <div
                 ref={brandHighlightRef}
                 className="absolute left-45 top-[45%] -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none z-[-1]"
               >
-                <img 
-                  src={svg.roundsvg} 
-                  alt="" 
-                  className="w-full h-full object-contain brightness-0 opacity-80" 
+                <img
+                  src={svg.roundsvg}
+                  alt=""
+                  className="w-full h-full object-contain brightness-0 opacity-80"
                 />
               </div>
             </span>
@@ -150,27 +150,27 @@ const LeadingBrands = () => {
       <div ref={marqueeRef} className="relative w-full mb-0 overflow-hidden">
         <div className="flex gap-24 md:gap-32 items-center py-8">
           {brands.map((brand, index) => (
-            <div 
-              key={`first-${index}`} 
-              ref={(el) => (brandItemsRef.current[index] = el)} 
+            <div
+              key={`first-${index}`}
+              ref={(el) => (brandItemsRef.current[index] = el)}
               className="group shrink-0 relative flex justify-center items-center"
             >
-              <img 
-                src={brand.img} 
+              <img
+                src={brand.img}
                 alt={`Brand ${index + 1}`}
                 className="w-32 md:w-40 lg:w-48 h-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-out transform group-hover:scale-110"
               />
             </div>
           ))}
-          
+
           {brands.map((brand, index) => (
-            <div 
-              key={`second-${index}`} 
-              ref={(el) => (brandItemsRef.current[index + brands.length] = el)} 
+            <div
+              key={`second-${index}`}
+              ref={(el) => (brandItemsRef.current[index + brands.length] = el)}
               className="group shrink-0 relative flex justify-center items-center"
             >
-              <img 
-                src={brand.img} 
+              <img
+                src={brand.img}
                 alt={`Brand ${index + 1}`}
                 className="w-32 md:w-40 lg:w-48 h-auto grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-out transform group-hover:scale-110"
               />

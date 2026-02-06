@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { faqs } from '../assets/assest.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown } from 'lucide-react'; 
+import { ChevronDown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,7 +11,7 @@ const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const sectionRef = useRef(null);
   const faqItemsRef = useRef([]);
-  
+
   const headingLine1 = useRef(null);
   const headingLine2 = useRef(null);
 
@@ -22,7 +22,7 @@ const Faq = () => {
   useEffect(() => {
     const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
     const ctx = gsap.context(() => {
-      
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -77,7 +77,7 @@ const Faq = () => {
   return (
     <section ref={sectionRef} className="w-full py-16 md:py-24 bg-[#fafafa] px-6 md:px-12 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* --- BRAND STYLE HEADING --- */}
         <div className="mb-20 md:mb-32 leading-[0.8] select-none">
           <div className="overflow-hidden">
@@ -99,7 +99,7 @@ const Faq = () => {
         {/* FAQ Accordion */}
         <div className="flex flex-col border-b border-gray-200">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={faq.id || index}
               ref={(el) => (faqItemsRef.current[index] = el)}
               className="border-t border-gray-200 overflow-hidden"
@@ -112,24 +112,22 @@ const Faq = () => {
                   <span className="text-[#f5a300] font-mono text-sm md:text-base font-bold mt-1 shrink-0">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <h3 className={`text-lg md:text-xl lg:text-2xl font-semibold transition-colors duration-300 ${
-                    activeIndex === index ? 'text-[#f5a300]' : 'text-black group-hover:text-[#f5a300]'
-                  }`}>
+                  <h3 className={`text-lg md:text-xl lg:text-2xl font-semibold transition-colors duration-300 ${activeIndex === index ? 'text-[#f5a300]' : 'text-black group-hover:text-[#f5a300]'
+                    }`}>
                     {faq.question}
                   </h3>
                 </div>
 
-                <div className={`transition-all duration-300 p-2 rounded-full border-2 shrink-0 ml-4 ${
-                  activeIndex === index 
-                    ? 'rotate-180 bg-[#f5a300] text-white border-[#f5a300]' 
-                    : 'text-black border-gray-300 group-hover:border-[#f5a300] group-hover:text-[#f5a300]'
-                }`}>
+                <div className={`transition-all duration-300 p-2 rounded-full border-2 shrink-0 ml-4 ${activeIndex === index
+                  ? 'rotate-180 bg-[#f5a300] text-white border-[#f5a300]'
+                  : 'text-black border-gray-300 group-hover:border-[#f5a300] group-hover:text-[#f5a300]'
+                  }`}>
                   <ChevronDown size={20} strokeWidth={2.5} />
                 </div>
               </button>
 
-              <div 
-                id={`faq-content-${index}`} 
+              <div
+                id={`faq-content-${index}`}
                 className="h-0 opacity-0 overflow-hidden"
               >
                 <div className="pb-6 md:pb-8 px-4 md:px-6 pl-12 md:pl-20">
@@ -148,8 +146,11 @@ const Faq = () => {
             Still have questions? We're here to help.
           </p>
           <NavLink to='/contact'>
-            <button className="bg-[#f5a300] text-white px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-[#e69500] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-              Contact Us
+            <button className="relative group overflow-hidden px-16 py-6 border border-black/10 rounded-full transition-all duration-500">
+              <span className="relative z-10 font-mono text-xs font-bold uppercase tracking-widest group-hover:text-white transition-colors duration-500">
+                Contact Us
+              </span>
+              <div className="absolute bottom-0 left-0 w-full h-0 bg-black group-hover:h-full transition-all duration-500 ease-expo z-0"></div>
             </button>
           </NavLink>
         </div>

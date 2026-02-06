@@ -55,7 +55,7 @@ export default function OurTeam() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: `+=${totalScroll}`, 
+          end: `+=${totalScroll}`,
           pin: true,
           pinSpacing: true,
           scrub: 0.8,

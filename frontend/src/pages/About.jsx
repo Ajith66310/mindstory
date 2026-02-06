@@ -1,8 +1,14 @@
 import React from 'react'
-
+import Timeline from '../components/Milestone'
+import StatsSection from '../components/StatsSection'
+import WhoWeAre from '../components/WhoWeAre'
 const About = () => {
   return (
-    <div>About</div>
+    <>
+      <WhoWeAre/>
+      <StatsSection />
+      <Timeline />
+    </>
   )
 }
 

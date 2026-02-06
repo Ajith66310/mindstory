@@ -98,8 +98,8 @@ const MindstoryHub = () => {
             Our Expertise in Digital Marketing
           </h2>
 
-          <p 
-            ref={descriptionRef} 
+          <p
+            ref={descriptionRef}
             className="text-gray-400 text-xl md:text-2xl font-medium transition-colors duration-300 font-body max-w-4xl leading-relaxed"
           >
             Mindstory, the best digital marketing agency in Thrissur, Kerala is your go-to hub for all things digital. From SEO to custom website design, we offer a comprehensive suite of services to elevate your brand and drive business growth.
@@ -117,13 +117,13 @@ const MindstoryHub = () => {
             {services.map((service) => (
               <div key={service.id} className="service-item border-t border-slate-100 pt-8 group">
                 <div className="flex justify-between items-start mb-6">
-                    <span className="text-xs font-mono text-orange-400">{service.id}</span>
-                    <span className="text-[10px] uppercase tracking-widest border border-slate-200 px-2 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 font-body">
-                        {service.tag}
-                    </span>
+                  <span className="text-xs font-mono text-orange-400">{service.id}</span>
+                  <span className="text-[10px] uppercase tracking-widest border border-slate-200 px-2 py-1 rounded-full group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300 font-body">
+                    {service.tag}
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:translate-x-2 transition-transform duration-500 font-heading">
-                    {service.title}
+                  {service.title}
                 </h3>
                 <p className="text-slate-500 leading-relaxed font-body">
                   {service.description}

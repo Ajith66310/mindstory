@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lottie from 'lottie-react';
-import animationData from '../assets/image.json'; 
+import animationData from '../assets/image.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,16 +20,16 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      
+
       const lottiePlayer = lottieRef.current;
-      
+
       gsap.to(lottiePlayer, {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top center",
           end: "bottom center",
-          scrub: 1.5, 
-            onUpdate: (self) => {
+          scrub: 1.5,
+          onUpdate: (self) => {
             if (lottiePlayer) {
               const frame = self.progress * (lottiePlayer.getDuration(true) || 100);
               lottiePlayer.goToAndStop(frame, true);
@@ -40,12 +40,12 @@ const WhyChooseUs = () => {
 
       const textElement = textRef.current;
       const words = textElement.innerText.split(' ');
-      textElement.innerHTML = words.map((word) => 
+      textElement.innerHTML = words.map((word) =>
         `<span class="word-wrapper" style="display:inline-block; margin-right:0.25em; overflow:hidden">
           <span class="word" style="display:inline-block">${word}</span>
         </span>`
       ).join('');
-      
+
       gsap.from(textElement.querySelectorAll('.word'), {
         y: 50,
         opacity: 0,
@@ -75,8 +75,8 @@ const WhyChooseUs = () => {
   }, []);
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="relative bg-[#fafafa] px-6 md:px-16 lg:px-24 overflow-hidden pb-0"
     >
       <style>{`
@@ -94,17 +94,17 @@ const WhyChooseUs = () => {
       `}</style>
 
       <div ref={containerRef} className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start pt-12 md:pt-20 pb-0">
-        
+
         <div className="lg:sticky lg:top-24 lg:h-112.5 flex justify-center items-center order-2 lg:order-1">
           <div className="relative w-full flex justify-center items-center">
             <div className="absolute w-[80%] h-[80%] bg-orange-50 rounded-full blur-[100px] opacity-20" />
-            
+
             <div className="relative z-10 w-full max-w-112.5">
-              <Lottie 
+              <Lottie
                 lottieRef={lottieRef}
                 animationData={animationData}
-                loop={false}      
-                autoplay={false}  
+                loop={false}
+                autoplay={false}
                 style={{ width: '100%', height: 'auto' }}
               />
             </div>
@@ -115,7 +115,7 @@ const WhyChooseUs = () => {
           <span ref={tagRef} className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase mb-3 font-body block">
             Partner with Our Agency
           </span>
-          
+
           <h2 ref={titleRef} className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 font-heading leading-tight tracking-tighter">
             Why Choose <span className="text-orange-500">Mindstory?</span>
           </h2>

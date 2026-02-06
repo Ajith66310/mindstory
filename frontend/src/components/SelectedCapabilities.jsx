@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { img, svg } from '../assets/assest'; 
+import { img, svg } from '../assets/assest';
 import ElasticLine from './ElasticLine';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +18,7 @@ const services = [
 const SelectedCapabilities = () => {
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
-  const descriptionRef = useRef(null); 
+  const descriptionRef = useRef(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -26,8 +26,8 @@ const SelectedCapabilities = () => {
         color: "#ff6900",
         scrollTrigger: {
           trigger: descriptionRef.current,
-          start: "top 80%", 
-          end: "top 40%",   
+          start: "top 80%",
+          end: "top 40%",
           scrub: true,
         }
       });
@@ -59,7 +59,7 @@ const SelectedCapabilities = () => {
                 rotationX: index % 2 === 0 ? progress * 12 : -progress * 12,
                 transformOrigin: "center center",
               });
-              
+
               const overlay = card.querySelector('.card-overlay');
               if (overlay) {
                 gsap.set(overlay, { opacity: progress * 0.5 });
@@ -70,12 +70,12 @@ const SelectedCapabilities = () => {
 
         const underline = card.querySelector('.curved-underline');
         if (underline) {
-          gsap.fromTo(underline, 
+          gsap.fromTo(underline,
             { scaleX: 0, opacity: 0, transformOrigin: "left center" },
-            { 
-              scaleX: 1, 
-              opacity: 1, 
-              duration: 1.2, 
+            {
+              scaleX: 1,
+              opacity: 1,
+              duration: 1.2,
               ease: "power2.out",
               scrollTrigger: {
                 trigger: card,
@@ -109,8 +109,8 @@ const SelectedCapabilities = () => {
           <h2 className="text-[10px] md:text-xs font-black tracking-[0.4em] uppercase font-body">
             Our Expertise in Digital Marketing
           </h2>
-          <p 
-            ref={descriptionRef} 
+          <p
+            ref={descriptionRef}
             className='text-gray-400 font-medium transition-colors duration-300 font-body'
           >
             At Mindstory, a top digital marketing agency in Kerala, we know how to use every type of digital marketing to boost your brand's online presence.
@@ -140,17 +140,17 @@ const SelectedCapabilities = () => {
                 <h3 className="text-5xl md:text-7xl lg:text-[7.5rem] font-black leading-[0.8] tracking-tighter uppercase text-black mb-6 font-heading" style={{ letterSpacing: '-0.04em' }}>
                   {service.title}
                 </h3>
-                
+
                 <div className="mb-8">
                   <h4 className="text-xl font-bold text-gray-500 uppercase tracking-widest relative inline-block font-body">
                     {service.fullName}
                     <div className="curved-underline absolute -bottom-3 left-0 w-full pointer-events-none">
-                      <img 
-                        src={service.svg} 
-                        alt="" 
+                      <img
+                        src={service.svg}
+                        alt=""
                         className="w-full h-auto"
-                        style={{ 
-                          filter:' invert(69%) sepia(83%) saturate(1653%) hue-rotate(2deg) brightness(167%) contrast(101%)'
+                        style={{
+                          filter: ' invert(69%) sepia(83%) saturate(1653%) hue-rotate(2deg) brightness(167%) contrast(101%)'
                         }}
                       />
                     </div>

@@ -5,7 +5,7 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-const AnimatedStats = ({ className = "" }) => {
+const StatsSection = ({ className = "" }) => {
   const containerRef = useRef(null);
   const headingLine1 = useRef(null);
   const headingLine2 = useRef(null);
@@ -186,4 +186,4 @@ const AnimatedStats = ({ className = "" }) => {
   );
 };
 
-export default AnimatedStats;
+export default StatsSection;

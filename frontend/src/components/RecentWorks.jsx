@@ -79,16 +79,16 @@ const RecentWorks = () => {
           duration: 3
         }, "startScrolling");
 
-        tl.to(page, { 
-          backgroundColor: "#fafafa", 
-          duration: 1.5, 
-          ease: "none" 
+        tl.to(page, {
+          backgroundColor: "#fafafa",
+          duration: 1.5,
+          ease: "none"
         }, "startScrolling+=1.5");
 
-        tl.to(textRecentRef.current, { 
-          color: "#000000", 
-          duration: 1.5, 
-          ease: "none" 
+        tl.to(textRecentRef.current, {
+          color: "#000000",
+          duration: 1.5,
+          ease: "none"
         }, "startScrolling+=1.5");
       }
     });

@@ -4,7 +4,7 @@ import SelectedCapabilities from '../components/SelectedCapabilities'
 const Services = () => {
   return (
     <>
-    <SelectedCapabilities/>
+      <SelectedCapabilities />
     </>
   )
 }

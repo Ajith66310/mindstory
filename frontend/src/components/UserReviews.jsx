@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, FreeMode, Autoplay } from 'swiper/modules';
-import { Star } from 'lucide-react'; 
+import { Star } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
@@ -19,7 +19,7 @@ const reviews = [
 export default function UserReviews() {
   return (
     <section className="bg-[#fafafa] w-full h-screen flex flex-col py-16 md:py-24 overflow-hidden select-none">
-      
+
       <div className="w-full px-6 md:px-16 lg:px-24 mb-20 md:mb-32">
         <div className="max-w-7xl mx-auto">
           <p className="text-orange-600 font-mono font-bold tracking-[0.3em] mb-4 text-xs uppercase">
@@ -38,19 +38,19 @@ export default function UserReviews() {
           slidesPerView={'auto'}
           freeMode={true}
           mousewheel={{ forceToAxis: true }}
-          loop={true} 
+          loop={true}
           autoplay={{
-            delay: 0, 
-            disableOnInteraction: false, 
-            pauseOnMouseEnter: true, 
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
-          speed={8000} 
+          speed={8000}
           className="w-full px-6 md:px-16 lg:px-24 overflow-visible!"
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id} className="w-[320px]! md:w-105!">
               <div className="bg-white p-10 rounded-[2.5rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.02)] h-full flex flex-col justify-between group hover:border-orange-200 transition-all duration-500">
-                
+
                 <div>
                   <div className="flex gap-1 mb-6 text-orange-500">
                     {[...Array(5)].map((_, i) => (
@@ -65,13 +65,13 @@ export default function UserReviews() {
 
                 <div className="flex items-center gap-4 mt-10">
                   <div className="relative w-14 h-14 shrink-0">
-                    <img 
-                      src={review.img} 
-                      alt={review.name} 
-                      className="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                    <img
+                      src={review.img}
+                      alt={review.name}
+                      className="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white flex items-center justify-center">
-                       <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-white rounded-full" />
                     </div>
                   </div>
                   <div className="overflow-hidden">
