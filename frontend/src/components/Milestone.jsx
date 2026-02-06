@@ -33,14 +33,26 @@ const Milestone = () => {
     const ctx = gsap.context(() => {
       const path = pathRef.current;
       const pathLength = path.getTotalLength();
+
       gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+
+      gsap.set(trackerRef.current, {
+        autoAlpha: 1, 
+        motionPath: {
+          path: path,
+          align: path,
+          alignOrigin: [0.5, 0.5],
+          start: 0,
+          end: 0
+        }
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top top",
+          start: "top 20%",
           end: "bottom bottom",
-          scrub: 3,
+          scrub: 2,
         }
       });
 
@@ -59,7 +71,7 @@ const Milestone = () => {
             duration: 0.8,
             scrollTrigger: {
               trigger: el,
-              start: "top 85%",
+              start: "top 55%",
               toggleActions: "play none none reverse"
             }
           });
@@ -77,26 +89,29 @@ const Milestone = () => {
       <div className="max-w-6xl mx-auto relative">
         <div className="mb-64 text-center">
           <h2 className="text-6xl font-black text-[#4B2C20] drop-shadow-md italic uppercase tracking-widest">
-            Our <span className="bg-gradient-to-r from-[#f5a300] via-[#ff6b00] to-[#f5a300] bg-clip-text text-transparent">Milestones</span>
+            Our <span className="bg-linear-to-r from-[#f5a300] via-[#ff6b00] to-[#f5a300] bg-clip-text text-transparent">Milestones</span>
           </h2>
           <p className="text-xl text-gray-600 font-medium mt-4">Journey of digital excellence through the years.</p>
         </div>
 
-        <div className="absolute inset-0 flex justify-center py-80 pointer-events-none">
+        <div className="absolute inset-0 flex justify-center pl-20 py-80 pointer-events-none">
           <svg width="1000" height="100%" viewBox="0 0 1801 7140" fill="none" preserveAspectRatio="xMidYMin meet" className="h-full drop-shadow-2xl">
             <path d="M1016.64 150.537C1016.64 150.537 -7.36325 518.537 184.637 1126.54C376.638 1734.54 1115.86 742.537 1432.64 1510.54C1749.41 2278.54 376.637 1878.54 376.637 2502.54C376.637 3126.54 1640.64 2534.54 1640.64 3174.54C1640.64 3814.54 203.863 3327.55 203.863 3951.55C203.863 4575.55 1263.09 4006.54 1451.86 4630.54C1640.64 5254.54 272.162 5302.54 324.399 5718.54C376.637 6134.54 1432.64 5670.54 1432.64 6230.54C1432.64 6790.54 488.638 6982.54 488.638 6982.54"
               stroke="#E8D5C4" strokeWidth="200" strokeLinecap="round" />
             <path ref={pathRef} d="M1016.64 150.537C1016.64 150.537 -7.36325 518.537 184.637 1126.54C376.638 1734.54 1115.86 742.537 1432.64 1510.54C1749.41 2278.54 376.637 1878.54 376.637 2502.54C376.637 3126.54 1640.64 2534.54 1640.64 3174.54C1640.64 3814.54 203.863 3327.55 203.863 3951.55C203.863 4575.55 1263.09 4006.54 1451.86 4630.54C1640.64 5254.54 272.162 5302.54 324.399 5718.54C376.637 6134.54 1432.64 5670.54 1432.64 6230.54C1432.64 6790.54 488.638 6982.54 488.638 6982.54"
               stroke="url(#trailGradient)" strokeWidth="180" strokeLinecap="round" />
             <defs>
-              <linearGradient id="trailGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#FF6B6B" />
-                <stop offset="100%" stopColor="#7B68EE" />
-              </linearGradient>
+              <defs>
+                <linearGradient id="trailGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FF8C42" />
+                  <stop offset="15%" stopColor="#FF8C42" />
+                </linearGradient>
+              </defs>
             </defs>
-            <g ref={trackerRef}>
-              <circle r="70" fill="#4B2C20" stroke="white" strokeWidth="20" />
-              <circle r="30" fill="white" className="animate-pulse" />
+            <g ref={trackerRef} className="opacity-0">
+              <circle r="75" fill="white" opacity="0.3" filter="blur(10px)" />
+              <circle r="60" fill="#4B2C20" stroke="white" strokeWidth="15" />
+              <circle r="25" fill="white" className="animate-pulse" />
             </g>
           </svg>
         </div>

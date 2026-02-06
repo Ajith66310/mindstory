@@ -119,7 +119,7 @@ const Careers = () => {
   };
 
   return (
-    <div ref={heroRef} className="min-h-screen bg-white text-black overflow-hidden">
+    <div ref={heroRef} className="min-h-screen bg-[#fafafa] text-black overflow-hidden">
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 pt-32 pb-20">
@@ -156,7 +156,6 @@ const Careers = () => {
             >
               <span className="relative z-10 flex items-center gap-2">
                 View Open Roles
-                <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-300" size={20} />
               </span>
               <div className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
             </button>
@@ -294,7 +293,6 @@ const Careers = () => {
                 className="bg-white text-[#f5a300] px-12 py-5 rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all duration-300 inline-flex items-center gap-3 shadow-lg"
               >
                 Submit Application
-                <ArrowUpRight size={20} />
               </button>
             </div>
           </div>
