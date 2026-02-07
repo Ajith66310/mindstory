@@ -11,6 +11,7 @@ import Error from './pages/Error'
 import CustomCursor from './components/CustomCursor'
 import Layout from './components/Layout'
 import SmoothScroll from './components/SmoothScroll'
+import OurApproach from './pages/OurApproach'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/learn' element={<Learn />} />
           <Route path='/services' element={<Services />} />
           <Route path='/works' element={<Works />} />
+          <Route path='/about/our-approach' element={<OurApproach />} />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>
